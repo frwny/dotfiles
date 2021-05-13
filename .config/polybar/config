@@ -1,0 +1,313 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = ${xrdb:background:#000}
+background-alt = ${xrdb:color0:#000}
+foreground = ${xrdb:color12:#000}
+foreground-alt = ${xrdb:color10:#000}
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+base03 =    ${xrdb:color8:#000}
+base02 =    ${xrdb:color0:#000}
+base01 =    ${xrdb:color10:#000}
+base00 =    ${xrdb:color11:#000}
+base0 =     ${xrdb:color12:#000}
+base1 =     ${xrdb:color14:#000}
+base2 =     ${xrdb:color7:#000}
+base3 =     ${xrdb:color15:#000}
+red =       ${xrdb:color1:#000}
+orange =    ${xrdb:color9:#000}
+green =     ${xrdb:color2:#000}
+yellow =    ${xrdb:color3:#000}
+blue =      ${xrdb:color4:#000}
+violet =    ${xrdb:color13:#000}
+magenta =   ${xrdb:color5:#000}
+cyan =      ${xrdb:color6:#000}
+
+
+
+
+[bar/left]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 225 
+height = 40 
+offset-x = 20
+offset-y = 20
+radius = 0
+fixed-center = true
+bottom = true
+wm-restack = bspwm
+
+background = ${colors.base02}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Oxygen:pixelsize=11;2
+font-1 = Inconsolata for Powerline:pixelsize=16;3
+font-2 = FontAwesome:pixelsize=10;2
+font-3 = Material Icons:pixelsize=10;2
+font-4 = icomoon:pixelsize=10;2
+
+modules-right = bspwm
+
+tray-position = 
+tray-padding = 2
+tray-transparent = false
+tray-background = ${colors.base03}
+tray-maxsize = 10
+tray-detached = true
+tray-offset-x = 47 
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.base02}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 5
+
+label-occupied = %index%
+label-occupied-padding = 5
+label-occupied-background = ${colors.base03}
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 5
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 5
+label-empty-background = ${colors.base03}
+
+[bar/right]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 500
+height = 40 
+offset-x = 845
+offset-y = 20
+radius = 0
+fixed-center = true
+bottom = true
+wm-restack = bspwm
+
+background = #00000000
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Oxygen:pixelsize=11;2
+font-1 = Inconsolata for Powerline:pixelsize=16;3
+font-2 = FontAwesome:pixelsize=10;2
+font-3 = Material Icons:pixelsize=10;2
+font-4 = icomoon:pixelsize=10;2
+
+modules-right = volume wlan battery date powermenu
+
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+tray-background = #000063ff
+tray-maxsize = 0
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-background = ${colors.base03}
+format-connected-prefix-padding-left = 5
+format-connected = <label-connected>
+format-connected-background = ${colors.base03}
+label-connected = %essid%
+label-connected-padding-right = 5
+
+
+format-disconnected-prefix = " "
+format-disconnected-prefix-background = ${colors.base03}
+format-disconnected-prefix-padding-left = 5
+format-disconnected = Disconnected
+format-disconnected-background = ${colors.base03}
+label-disconnected-padding-right = 5
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %a %d %b"
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = " "
+format-prefix-background = ${colors.base03}
+format-prefix-padding-left = 5
+format-background = ${colors.base03}
+label = %date% %time%
+label-padding-right = 7
+
+
+[module/volume]
+type = internal/volume
+
+format-volume-prefix = " "
+format-volume-prefix-background = ${colors.base03}
+format-volume-prefix-padding-left = 7
+format-volume = <label-volume> 
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+label-volume-background = ${colors.base03}
+label-volume-padding-right = 5
+
+format-muted-prefix = " "
+format-muted-prefix-background = ${colors.base03}
+format-muted-prefix-padding-left = 5
+format-muted = <label-muted>
+format-muted-foreground = ${colors.foreground}
+format-muted-background = ${colors.base03}
+label-muted = %percentage%% 
+label-muted-padding-right = 5
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging-prefix = " " 
+format-charging-prefix-background = ${colors.base03}
+format-charging-prefix-padding-left = 4
+format-charging = <animation-charging> <label-charging>
+format-charging-background = ${colors.base03}
+label-charging-padding-right = 5
+
+format-discharging-prefix = <ramp-capacity>
+format-discharging-prefix-background = ${colors.base03}
+format-discharging-prefix-padding-left = 5
+format-discharging = <label-discharging>
+format-discharging-background = ${colors.base03}
+label-discharging-padding-right = 5
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-prefix-padding-left = 5
+format-full-background = ${colors.base03}
+label-full = %percentage%%
+label-full-padding-right = 5
+
+ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-3 = "  "
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = "  "
+animation-charging-1 = "  "
+animation-charging-2 = "  "
+animation-charging-3 = "  "
+animation-charging-4 = "  "
+nimation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini

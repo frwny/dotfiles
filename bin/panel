@@ -1,0 +1,85 @@
+#!/bin/bash
+
+STD="#FF282522"
+BKG="#FF002b36"
+GRE="#ff859900"
+CYA="#ff2aa198"
+BLU="#ff268bd2"
+VIO="#ff6c71c4"
+MAG="#ffd33682"
+RED="#ffdc322f"
+
+
+clk(){
+	DATE=$(date '+%a %d %b %H:%M')
+	echo " $DATE"
+}
+
+work(){
+	SPACE_NUM=$(xprop -root -notype _NET_CURRENT_DESKTOP | cut -d= -f2);
+		case "$SPACE_NUM" in
+			" 0")
+				WORKSPACE='[1] 2 3 4 5 6';;
+			" 1")
+				WORKSPACE='1 [2] 3 4 5 6';;
+			" 2")
+				WORKSPACE='1 2 [3] 4 5 6';;
+			" 3")
+				WORKSPACE='1 2 3 [4] 5 6';;
+			" 4")
+				WORKSPACE='1 2 3 4 [5] 6';;
+			" 5")
+				WORKSPACE='1 2 3 4 5 [6]';;
+
+		esac
+	echo "$WORKSPACE"
+}
+
+
+wifi(){
+        WID=$(iwgetid -r)
+	if [[ -n ${WID} ]]; then 
+		echo " ${WID// /}"
+	else
+		echo " Disconnected"
+	fi
+}
+
+battery(){
+	BAT=$(acpi --battery | cut -d, -f 2)
+        AC=$(acpi -a | cut -d : -f 2)
+	
+	if [[ $AC == " on-line" ]]; then
+		echo " $BAT+"
+	else
+		echo " $BAT"
+	fi
+
+}
+
+vol(){
+	VOL=$(pulseaudio-ctl full-status| cut -d ' ' -f 1)
+	if [[ $(pulseaudio-ctl full-status | cut -d ' ' -f 2) == "no" ]]; then
+		echo " $VOL%"
+	else
+		echo " $VOL%"
+	fi
+}
+
+#mpd(){
+#	if [[ $(mpc status | awk 'NR==2 {print $1}') == "[playing]" ]]; then
+#		TTL=$(mpc current --format "%title%")
+#		#ART=$(mpc current --format "%artist%")
+#		echo " $TTL"
+#	else
+#		echo " Stopped"
+#	fi
+#}
+
+
+while :; do
+
+	echo "%{l}%{B$GRE}  $(work)  %{l}%{r}%{A:pulseaudio-ctl mute:}%{B$CYA}  $(vol)  %{A}%{B$BLU}  $(wifi)  %{A:/home/frwny/bin/paneldrop | lemonbar:}%{B$VIO}  $(battery)  %{A}%{B$RED}  $(clk)  %{B$BKG}%{r}"
+
+sleep .05s 
+done
