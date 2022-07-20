@@ -8,8 +8,7 @@ compinit
 export PATH=/Users/Yegor.Milyeav/bin:$PATH
 export EDITOR="vim"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/
-export NEXUS_USER=IqiHMqCY
-export NEXUS_TOKEN=7mQdYbxzFaOOdwW0PoN2XVPVjakETEGnWxUq68fZ_mhE
+
 
 #syntax highlighting
 source /Users/Yegor.Milyeav/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
