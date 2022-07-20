@@ -5,21 +5,26 @@ compinit
 #set default editor
 
 #paths
-export PATH=/home/frowny/bin:$PATH
-export BSPWM_SOCKET=/tmp/bspwm_0_0-socket
-export BROWSER="firefox-nightly"
+export PATH=/Users/Yegor.Milyeav/bin:$PATH
 export EDITOR="vim"
-
-#powerline
-#. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/
+export NEXUS_USER=IqiHMqCY
+export NEXUS_TOKEN=7mQdYbxzFaOOdwW0PoN2XVPVjakETEGnWxUq68fZ_mhE
 
 #syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/Yegor.Milyeav/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 #prompt and colours
 autoload -U colors && colors 
-#PROMPT=%F{4}">> "%f
-PROMPT="%{${fg[red]}%}[%~]%{${fg[cyan]}%} > %{${fg[default]}%}"
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/\ \ \1/p'
+}
+setopt PROMPT_SUBST
+# PROMPT=%F{4}">> "%f
+export PROMPT='%{$fg[yellow]%} %{${fg[blue]}%1~%}%{${fg[cyan]}%}${fg[magenta]}$(parse_git_branch) %{${fg[default]}%}'
 
 #aliases
 alias tmux="tmux -2"
@@ -28,24 +33,11 @@ alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias ls="ls -h"
 alias grep="grep --color=auto"
-alias mount="mount |column -t"
 alias c="clear"
-alias bar=
-alias xres="xrdb -merge ~/.Xresources"
-alias image="feh -B white -."
 alias mkdir="mkdir -p"
 alias rm="rm -r"
 alias cp="cp -r"
-alias tether="sudo dhcpcd enp0s26u1u1"
 alias pong="ping -c 3 google.com"
-alias newconnect="nmcli dev wifi connect -a"
-alias connect="nmcli --ask con up"
-alias disconnect="nmcli con down"
-alias wifilist="nmcli dev wifi"
-alias music="mpdas -d && mpd"
-alias mountcd="sudo mount -t iso9660 -o loop /dev/sr0 /mnt/cdrom"
-alias winedir="cd ~/.wine/drive_c/Program\ Files\ \(x86\)/"
-
 
 
 # fixing special keys. to add other keys to this hash, see: man 5 terminfo
@@ -87,3 +79,10 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+export PATH="$PATH:/Users/Yegor.Milyeav/.npm-global/lib/node_modules/grunt-cli/bin"
+export PATH="/Users/Yegor.Milyeav/Library/Python/2.7/bin:$PATH"
+export PATH="$PATH:/Users/Yegor.Milyeav/Library/Python/3.8/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
+export PATH="$PATH:/Users/Yegor.Milyeav/Library/Python/3.7/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.7/bin"
+export SSL_CERT_FILE=/private/tescoconfig/tescocert/cert.pem  
