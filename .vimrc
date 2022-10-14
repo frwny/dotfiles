@@ -4,19 +4,22 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-
 "Plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'preservim/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'cohlin/vim-colorschemes'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+call vundle#begin()
+  Plugin 'nvim-lua/plenary.nvim'
+  Plugin 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+  Plugin 'axkirillov/easypick.nvim'
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'preservim/nerdtree'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'cohlin/vim-colorschemes'
+  Plugin 'arcticicestudio/nord-vim'
+  Plugin 'sheerun/vim-polyglot'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-surround'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'tpope/vim-commentary'
 call vundle#end()
 
 "Settings
@@ -32,7 +35,7 @@ set laststatus=2
 "Show paste when in paste mode
 let g:airline_detect_paste=1
 "Solarized airline statusbar
-let g:airline_theme='term_light'
+let g:airline_theme='nord'
 "Powerline arrows
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled=1
@@ -44,40 +47,36 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 "##########################################
 
-
 "Enable nerdtree
 let g:nerdtree_tabs_open_on_console_startup = 1
-let NERDTreeWinPos = "left"
+let NERDTreeWinPos = "right"
 let NERDTreeShowHidden = 1
 
 "##########################################
 
-"Easytags settings
-set tags=./tags;,~/.vimtags
-
-"Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
+" ctrlp settings
+let g:ctrlp_show_hidden=1
 
 "##########################################
 
 set backspace=indent,eol,start
+set relativenumber
+set number
+set guicursor=
 set ruler
 set number
 set showcmd
 set incsearch
 set hlsearch
 set nohlsearch
-set t_Co=256
+set scrolloff=8
 " My settings
 set completeopt=menu,menuone,noselect " better autocomplete options
 set hidden " allow hidden buffers
 set nobackup " don't create backup files
 set nowritebackup " don't create backup files
 set cmdheight=1 " only one line for commands
+set t_Co=256
 if (has("termguicolors"))
   set termguicolors " better colors, but makes it sery slow!
 endif
@@ -89,14 +88,13 @@ set shiftwidth=2
 set expandtab
 set splitbelow
 set splitright
-set number
 set showmatch
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=99
 set noautochdir
 syntax enable
 colorscheme nord
-let g:solarized_termcolors=265
+set t_u7=
 
 "##########################################
 
@@ -104,28 +102,33 @@ let g:solarized_termcolors=265
 "LEADER"
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
-nnoremap <CR> za
-nnoremap <Leader>t :term ++rows=15<CR>
-nnoremap <c-y> "+yy
-vnoremap <c-y> "+y
+nnoremap <Leader>b :lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <Leader>g :Git 
+nnoremap <S-CR> za
+nnoremap <C-y> "+yy
+vnoremap <C-y> "+y
 
-nnoremap <c-s> :grep -r 
-nmap <silent> <C-n> :cn<CR>zv
-nmap <silent> <C-p> :cp<CR>zv
+" grep/search
+nnoremap <Leader>p :Telescope git_files hidden=true no_ignore=true<CR>
+nnoremap <Leader>s :Grep 
+nnoremap <Leader>S :Grep <cword><CR>
+nnoremap <silent> <Leader>q :lua require'telescope.builtin'.quickfix()<CR>
+nnoremap <silent> <C-n> :cn<CR>
+nnoremap <silent> <C-p> :cp<CR>
 
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+nnoremap <silent> <C-k> :wincmd k<CR>
+nnoremap <silent> <C-j> :wincmd j<CR>
+nnoremap <silent> <C-h> :wincmd h<CR>
+nnoremap <silent> <C-l> :wincmd l<CR>
 
 "Nerdtags toggle
-nmap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
 
-"split resize
-nmap <leader><Up> :res +5<CR>
-nmap <leader><Down> :res -5<CR>
+" Buffer switching
+map gn :bn<CR>
+map gp :bp<CR>
+map gd :bd<CR>
 
 "########################################
 
@@ -146,3 +149,20 @@ function! MyFoldText() " {{{
     return line . repeat(" ",fillcharcount) . foldedlinecount . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
+
+
+
+
+
+" improved grep function
+set grepprg=grep
+
+function! Grep(...)
+    return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+endfunction
+
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+
+cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
+cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
