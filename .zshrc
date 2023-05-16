@@ -5,14 +5,14 @@ compinit
 #set default editor
 
 #paths
-export PATH=/Users/Yegor.Milyeav/bin:$PATH
+export PATH=/Users/Yegor.Milyaev/bin:$PATH
 export EDITOR="vim"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/
 export NEXUS_USER=IqiHMqCY
 export NEXUS_TOKEN=7mQdYbxzFaOOdwW0PoN2XVPVjakETEGnWxUq68fZ_mhE
 
 #syntax highlighting
-source /Users/Yegor.Milyeav/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/Yegor.Milyaev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
@@ -24,14 +24,16 @@ function parse_git_branch() {
 }
 setopt PROMPT_SUBST
 # PROMPT=%F{4}">> "%f
-export PROMPT='%{$fg[yellow]%} %{${fg[blue]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
+export PROMPT='%{$fg[yellow]%}➤ %{${fg[blue]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
 
 #aliases
+alias vim="/opt/nvim-macos/bin/nvim"
 alias tmux="tmux -2"
 alias suspend="systemctl suspend"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
-alias ls="ls -h"
+alias ls="ls -Gh"
+alias ll="ls -Ghla"
 alias grep="grep --color=auto"
 alias c="clear"
 alias mkdir="mkdir -p"
@@ -79,10 +81,10 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
-export PATH="$PATH:/Users/Yegor.Milyeav/.npm-global/lib/node_modules/grunt-cli/bin"
-export PATH="/Users/Yegor.Milyeav/Library/Python/2.7/bin:$PATH"
-export PATH="$PATH:/Users/Yegor.Milyeav/Library/Python/3.8/bin"
+export PATH="$PATH:/Users/Yegor.Milyaev/.npm-global/lib/node_modules/grunt-cli/bin"
+export PATH="/Users/Yegor.Milyaev/Library/Python/2.7/bin:$PATH"
+export PATH="$PATH:/Users/Yegor.Milyaev/Library/Python/3.8/bin"
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
-export PATH="$PATH:/Users/Yegor.Milyeav/Library/Python/3.7/bin"
+export PATH="$PATH:/Users/Yegor.Milyaev/Library/Python/3.7/bin"
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.7/bin"
 export SSL_CERT_FILE=/private/tescoconfig/tescocert/cert.pem  
