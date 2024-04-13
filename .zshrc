@@ -1,3 +1,5 @@
+set -o vi
+
 #load autocomplete
 autoload -U compinit
 compinit
@@ -5,7 +7,7 @@ compinit
 #set default editor
 
 #paths
-export EDITOR="vim"
+export EDITOR="nvim"
 
 #syntax highlighting
 #source /Users/Yegor.Milyaev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -20,11 +22,10 @@ function parse_git_branch() {
 }
 setopt PROMPT_SUBST
 # PROMPT=%F{4}">> "%f
-export PROMPT='%{$fg[yellow]%}➤ %{${fg[blue]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
+export PROMPT='%{$fg[yellow]%}➤ %{${fg[cyan]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
 
 #aliases
-#alias vim="/opt/nvim-macos/bin/nvim"
-alias tmux="tmux -2"
+alias vim="nvim"
 alias suspend="systemctl suspend"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
@@ -77,3 +78,17 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+plugins=(git)
