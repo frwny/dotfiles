@@ -135,9 +135,9 @@ nnoremap <silent> <C-S-h> :vertical-resize -10<CR>
 nnoremap <silent> <C-S-l> :vertical-resize +10<CR>
 
 " Buffer switching
-map gn :bn<CR>
-map gp :bp<CR>
 map gd :bd!<CR>
+map <Tab> :bn<CR>
+map <S-Tab> :bp<CR>
 
 " DiffView
 nnoremap <leader>dd :DiffviewOpen 
