@@ -3,6 +3,11 @@ set nocompatible
 filetype off
 
 lua require('plugins')
+lua require('lualine-config')
+lua require('leap').create_default_mappings()
+lua require('treesitter-config')
+lua require('telescope-config')
+lua require('startup-config')
 
 " set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -36,22 +41,31 @@ syntax on
 "Show powerline statusbar
 set laststatus=2
 "Show paste when in paste mode
-let g:airline_detect_paste=1
-"Solarized airline statusbar
-let g:airline_theme='nord'
-"Powerline arrows
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#branch#enabled=1
-"Tabs
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#buffer_idx_mode = 1
+"let g:airline_detect_paste=1
+"let g:airline#extensions#whitespace#enabled = 0
+""Solarized airline statusbar
+"let g:airline_theme='nord'
+""Powerline arrows
+"let g:airline_powerline_fonts = 0
+"let g:airline#extensions#branch#enabled=1
+""Tabs
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_tabs = 1
+"let g:airline#extensions#tabline#show_close_button = 0
+"let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+"Nord settings
+let g:nord_contrast = v:true
+let g:nord_borders = v:false
+let g:nord_disable_background = v:false
+let g:nord_italic = v:false
+let g:nord_uniform_diff_background = v:true
+let g:nord_bold = v:false
 
 "Fern settings
 let g:fern#renderer = "nvim-web-devicons"
 let g:glyph_palette#palette = v:lua.require'fr-web-icons'.palette()
-let g:fern#default_hidden = 1
+let g:fern#default_hidden = 0
 
 
 
@@ -107,26 +121,29 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap <Leader>b :lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<CR>
 nnoremap <Leader>gg :Git 
-nnoremap <Leader>gb :Telescope git_branches<CR>
-nnoremap <Leader>gl :Telescope git_commits<CR>
+nnoremap <Leader>gb :Telescope git_branches layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>gl :Telescope git_commits layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gs :Telescope git_status<CR>
 nnoremap <S-CR> za
-nnoremap <C-y> "+yy
-vnoremap <C-y> "+y
+nnoremap <Leader>y "+yy
+vnoremap <Leader>y "+y
 
 " grep/search
-nnoremap <Leader>p :Telescope git_files hidden=true no_ignore=true<CR>
-nnoremap <Leader>s :Grep 
-nnoremap <Leader>S :Grep <cword><CR>
-nnoremap <Leader>q :lua require'telescope.builtin'.quickfix({layout_strategy='vertical',layout_config={width=0.7}})<CR>
+nnoremap <Leader>p :Telescope git_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>s :Telescope live_grep<CR>
+nnoremap <Leader>S :Telescope grep_string<CR>
+nnoremap <Leader>q :Telescope quickfix layout_strategy=vertical layout_config={width=0.7}<CR>
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
 
+" json formatting
+command Json :%!jq .
+
 " Use ctrl-[hjkl] to select the active split!
-nnoremap <silent> <C-k> :wincmd k<CR>
-nnoremap <silent> <C-j> :wincmd j<CR>
-nnoremap <silent> <C-h> :wincmd h<CR>
-nnoremap <silent> <C-l> :wincmd l<CR>
+map <silent> <C-k> <C-W>k
+map <silent> <C-j> <C-W>j
+map <silent> <C-h> <C-W>h
+map <silent> <C-l> <C-W>l
 
 " Use c-s-[hjkl] to resize split
 nnoremap <silent> <C-S-k> :resize +10<CR>
@@ -135,9 +152,9 @@ nnoremap <silent> <C-S-h> :vertical-resize -10<CR>
 nnoremap <silent> <C-S-l> :vertical-resize +10<CR>
 
 " Buffer switching
-map gd :bd!<CR>
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
+map gd :bd!<CR>
 
 " DiffView
 nnoremap <leader>dd :DiffviewOpen 
@@ -169,14 +186,16 @@ set foldtext=MyFoldText()
 
 
 " improved grep function
-set grepprg=grepr
+" set grepprg=grepr
 
-function! Grep(...)
-    return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
-endfunction
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
-cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
-augroup quickfix
-    autocmd!
-    autocmd QuickFixCmdPost cgetexpr :execute "lua require'telescope.builtin'.quickfix({layout_strategy='vertical',layout_config={width=0.7}})"
-augroup END
+" function! Grep(...)
+"     return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+" endfunction
+" command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+" cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
+" augroup quickfix
+"     autocmd!
+"     autocmd QuickFixCmdPost cgetexpr :execute "Telescope quickfix layout_strategy=vertical layout_config={width=0.7}<CR>"
+" augroup END
+
+
