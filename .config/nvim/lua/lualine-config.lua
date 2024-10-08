@@ -5,8 +5,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'nord',
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -27,7 +27,7 @@ require('lualine').setup {
       'filename',
       path = 1
   }},
-    lualine_x = {'encoding', 'filetype'},
+    lualine_x = {'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },

@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
   -- use 'vim-airline/vim-airline-themes'
   use 'cohlin/vim-colorschemes'
   -- use 'arcticicestudio/nord-vim'
-  use 'shaunsingh/nord.nvim'
+  use 'gbprod/nord.nvim'
   use 'ggandor/leap.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
