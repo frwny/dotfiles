@@ -129,6 +129,12 @@ nnoremap <S-CR> za
 nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
 
+"terminal
+command! Term :bot sp | term
+autocmd TermOpen term://* startinsert
+tnoremap <Esc> <C-\><C-n>
+nnoremap <Leader>ft :Term<CR>
+
 " grep/search
 nnoremap <Leader>ff :Telescope git_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>lg :Telescope live_grep<CR>
