@@ -162,7 +162,7 @@ nnoremap <leader>dd :DiffviewOpen
 nnoremap <leader>dq :DiffviewClose<CR>
 
 "Fern toggle
-nnoremap <silent> <leader>fl :Fern . -drawer -toggle -reveal=% -width=30<CR>
+nnoremap <silent> <leader>p :Fern . -drawer -toggle -reveal=% -width=30<CR>
 
 "########################################
 
