@@ -124,6 +124,7 @@ nnoremap <Leader>gg :Git
 nnoremap <Leader>gb :Telescope git_branches layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gl :Telescope git_commits layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gs :Telescope git_status<CR>
+nnoremap <Leader>of :Telescope oldfiles<CR>
 nnoremap <S-CR> za
 nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
