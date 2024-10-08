@@ -129,9 +129,9 @@ nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
 
 " grep/search
-nnoremap <Leader>p :Telescope git_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
-nnoremap <Leader>s :Telescope live_grep<CR>
-nnoremap <Leader>S :Telescope grep_string<CR>
+nnoremap <Leader>ff :Telescope git_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>lg :Telescope live_grep<CR>
+nnoremap <Leader>gs :Telescope grep_string<CR>
 nnoremap <Leader>q :Telescope quickfix layout_strategy=vertical layout_config={width=0.7}<CR>
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
@@ -161,7 +161,7 @@ nnoremap <leader>dd :DiffviewOpen
 nnoremap <leader>dq :DiffviewClose<CR>
 
 "Fern toggle
-nnoremap <silent> <leader>f :Fern . -drawer -toggle -reveal=% -width=60<CR>
+nnoremap <silent> <leader>fl :Fern . -drawer -toggle -reveal=% -width=30<CR>
 
 "########################################
 
