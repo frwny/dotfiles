@@ -119,26 +119,28 @@ set t_u7=
 "LEADER"
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-nnoremap <Leader>b :lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <Leader>b :Telescope buffers<CR>
 nnoremap <Leader>gg :Git 
 nnoremap <Leader>gb :Telescope git_branches layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gl :Telescope git_commits layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gs :Telescope git_status<CR>
 nnoremap <Leader>of :Telescope oldfiles<CR>
+nnoremap <Leader>k :lua require'telescope-config'.project_files()<CR>
 nnoremap <S-CR> za
 nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
 
 "terminal
-command! Term :bot sp | term
+command! Term :bot 10 sp | term
 autocmd TermOpen term://* startinsert
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Leader>ft :Term<CR>
 
 " grep/search
-nnoremap <Leader>ff :Telescope git_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>ff :Telescope find_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>lg :Telescope live_grep<CR>
 nnoremap <Leader>gs :Telescope grep_string<CR>
+nnoremap <Leader>fb :Telescope file_browser<CR>
 nnoremap <Leader>q :Telescope quickfix layout_strategy=vertical layout_config={width=0.7}<CR>
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
