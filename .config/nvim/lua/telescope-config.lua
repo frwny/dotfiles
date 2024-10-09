@@ -14,5 +14,9 @@ require('telescope').setup {
         "--exclude-dir=*cache*",
         "--exclude-dir=*.git",
     },
+    file_ignore_patterns = {
+      "^.git/*",
+      "node_modules/*",
+    },
   },
 }
