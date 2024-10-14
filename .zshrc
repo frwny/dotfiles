@@ -8,6 +8,7 @@ compinit
 
 #paths
 export EDITOR="nvim"
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 #syntax highlighting
 #source /Users/Yegor.Milyaev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -16,15 +17,22 @@ export EDITOR="nvim"
 #ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 #prompt and colours
-autoload -U colors && colors 
-function parse_git_branch() {
-    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/\ \ \1/p'
-}
-setopt PROMPT_SUBST
+# autoload -U colors && colors 
+# function parse_git_branch() {
+#     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/\ \ \1/p'
+# }
+# setopt PROMPT_SUBST
 # PROMPT=%F{4}">> "%f
-export PROMPT='%{$fg[yellow]%}➤ %{${fg[cyan]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
+#export PROMPT='%{$fg[yellow]%}➤ %{${fg[cyan]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
+
+#kittens
+alias ssh="kitten ssh"
+alias icat="kitten icat"
+alias diff="kitten diff"
+
 
 #aliases
+alias jukebox="mpv http://fig.whatbox.ca:3003 > /dev/null 2>&1 &"
 alias vim="nvim"
 alias suspend="systemctl suspend"
 alias poweroff="systemctl poweroff"
@@ -81,7 +89,7 @@ fi
 
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -92,3 +100,5 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 plugins=(git)
+
+source ~/.config/prompt.zsh
