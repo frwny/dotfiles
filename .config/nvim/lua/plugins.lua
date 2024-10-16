@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'airblade/vim-gitgutter'
   use 'tpope/vim-commentary'
+  use 'folke/zen-mode.nvim'
   use 'nvim-tree/nvim-web-devicons' 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -38,4 +39,14 @@ return require('packer').startup(function(use)
       { 'lambdalisue/fern-git-status.vim' }
     }
   }
+
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+  }
 end)
+
+

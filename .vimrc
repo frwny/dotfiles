@@ -129,9 +129,10 @@ nnoremap <Leader>k :lua require'telescope-config'.project_files()<CR>
 nnoremap <S-CR> za
 nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
+nnoremap <Leader>z :ZenMode<CR>
 
 "terminal
-command! Term :bot sp | term
+command! Term :bot 10sp | term
 autocmd TermOpen term://* startinsert
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Leader>ft :Term<CR>
