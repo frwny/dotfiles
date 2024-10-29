@@ -7,6 +7,8 @@ lua require('lualine-config')
 lua require('leap').create_default_mappings()
 lua require('treesitter-config')
 lua require('telescope-config')
+lua require('lsp-config')
+lua require('tiny-inline-diagnostic-config')
 lua require('startup-config')
 
 " set rtp+=~/.vim/bundle/Vundle.vim
@@ -192,14 +194,6 @@ function! MyFoldText() " {{{
 endfunction " }}}
 set foldtext=MyFoldText()
 
-" terraform lsp
-lua <<EOF
-  require'lspconfig'.terraformls.setup{
-    vim.diagnostic.config({
-      virtual_text = false,
-  })
-  }
-EOF
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 

@@ -2,7 +2,6 @@ require('startup').setup({
   theme = "dashboard",
   options = {
     mapping_keys = true, -- display mapping (e.g. <leader>ff)
-
     -- if < 1 fraction of screen width
     -- if > 1 numbers of column
     cursor_column = 0.5,
