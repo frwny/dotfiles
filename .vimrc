@@ -131,7 +131,7 @@ nnoremap <Leader>k :lua require'telescope-config'.project_files()<CR>
 nnoremap <S-CR> za
 nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
-nnoremap <Leader>z :ZenMode<CR>
+nnoremap <silent> <Leader>z :ZenMode<CR>
 
 "terminal
 command! Term :bot 10sp | term

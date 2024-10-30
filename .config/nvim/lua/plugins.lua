@@ -1,12 +1,11 @@
 return require('packer').startup(function(use)
--- Packer can manage itself
+-- core plugins
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
 
 -- vanity plugins
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-tree/nvim-web-devicons'
-  use 'cohlin/vim-colorschemes'
   use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
   use {

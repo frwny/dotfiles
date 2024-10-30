@@ -5,6 +5,10 @@ require'lspconfig'.terraformls.setup{
   })
 }
 
+require'lspconfig'.bashls.setup{
+  cmd = { "bash-language-server", "start" }
+}
+
 require'lspconfig'.lua_ls.setup {
   on_init = function(client)
     if client.workspace_folders then
