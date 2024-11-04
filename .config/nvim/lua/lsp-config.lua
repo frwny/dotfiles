@@ -1,15 +1,10 @@
+local lspconfig = require("lspconfig")
 -- terraform lsp setup
-require'lspconfig'.terraformls.setup{
-    vim.diagnostic.config({
-      virtual_text = false,
-  })
-}
+lspconfig.terraformls.setup{}
 
-require'lspconfig'.bashls.setup{
-  cmd = { "bash-language-server", "start" }
-}
+lspconfig.bashls.setup{}
 
-require'lspconfig'.lua_ls.setup {
+lspconfig.lua_ls.setup{
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name

@@ -197,7 +197,9 @@ set foldtext=MyFoldText()
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 
-
+lua << EOF
+vim.lsp.set_log_level("debug")
+EOF
 
 " improved grep function
 " set grepprg=grepr

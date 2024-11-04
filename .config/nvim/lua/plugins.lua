@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
+  use 'j-hui/fidget.nvim'
   use {
     "startup-nvim/startup.nvim",
       requires = {
@@ -44,7 +45,7 @@ return require('packer').startup(function(use)
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
-        require("nvim-autopairs").setup {}
+        require("nvim-autopairs").setup{}
     end
   }
 
