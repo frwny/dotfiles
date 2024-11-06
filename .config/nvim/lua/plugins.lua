@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
 
 -- lsp, syntax and linting plugins
   use 'neovim/nvim-lspconfig'
+  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
   use 'rachartier/tiny-inline-diagnostic.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -29,11 +30,14 @@ return require('packer').startup(function(use)
   }
 
 -- utility plugins
+-- use {
+  use 'rmagatti/auto-session'
   use 'ggandor/leap.nvim'
   use 'tpope/vim-commentary'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'tpope/vim-surround'
+  use 'kylechui/nvim-surround'
   use 'nvim-telescope/telescope.nvim'
+  use "windwp/nvim-autopairs"
   use { 'lambdalisue/fern.vim',
     requires = {
       { 'lambdalisue/glyph-palette.vim' },
@@ -41,14 +45,6 @@ return require('packer').startup(function(use)
       { 'lambdalisue/fern-git-status.vim' }
     }
   }
-  use {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = function()
-        require("nvim-autopairs").setup{}
-    end
-  }
-
 end)
 
 

@@ -2,14 +2,25 @@
 set nocompatible
 filetype off
 
-lua require('plugins')
-lua require('lualine-config')
-lua require('leap').create_default_mappings()
-lua require('treesitter-config')
-lua require('telescope-config')
-lua require('lsp-config')
-lua require('tiny-inline-diagnostic-config')
-lua require('startup-config')
+lua << EOF
+require('plugins')
+require('lualine-config')
+require('leap').create_default_mappings()
+require('treesitter-config')
+require('telescope-config')
+require('startup-config')
+require('auto-session-config')
+require('nvim-surround').setup()
+require('nvim-autopairs').setup()
+
+
+require('lsp-config')
+require('tiny-inline-diagnostic-config')
+vim.diagnostic.config({ 
+  virtual_text = false 
+})
+EOF
+
 
 " set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -124,6 +135,7 @@ let mapleader = " "
 nnoremap <Leader>b :Telescope buffers<CR>
 nnoremap <Leader>gg :Git 
 nnoremap <Leader>gb :Telescope git_branches layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>sr :Telescope session-lens layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gl :Telescope git_commits layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gs :Telescope git_status<CR>
 nnoremap <Leader>of :Telescope oldfiles<CR>

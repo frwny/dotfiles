@@ -21,6 +21,7 @@ local settings = {
         title = "Basic Commands",
         margin = 2,
         content = {
+            { " Session Restore", "SessionSearch", "<leader>sr" },
             { " Find File", "Telescope find_files", "<leader>ff" },
             { "󰍉 Find Word", "Telescope live_grep", "<leader>lg" },
             { " Recent Files", "Telescope oldfiles", "<leader>of" },

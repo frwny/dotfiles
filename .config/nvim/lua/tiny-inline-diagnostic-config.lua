@@ -1,14 +1,11 @@
 require('tiny-inline-diagnostic').setup({
   -- Default configuration
-  vim.diagnostic.config({
-    virtual_text = false,
-  }),
 	signs = {
 		left = "",
 		right = "",
 		diag = "●",
-		arrow = "    ",
-		up_arrow = "    ",
+		arrow = "  ",
+		up_arrow = "  ",
 		vertical = " │",
 		vertical_end = " └",
 	},
@@ -50,7 +47,7 @@ require('tiny-inline-diagnostic').setup({
 			--    - wrap: when the message is too long, it is then displayed on multiple lines.
 			--    - none: the message will not be truncated.
 			--    - oneline: message will be displayed entirely on one line.
-			mode = "wrap",
+			mode = "oneline",
 		},
 
 		-- Format the diagnostic message.
