@@ -25,9 +25,9 @@ require("auto-session").setup {
 
         mappings = {
           -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode
-          delete_session = { "i", "<C-D>" },
-          alternate_session = { "i", "<C-S>" },
-          copy_session = { "i", "<C-Y>" },
+          delete_session = { "n", "<C-D>" },
+          alternate_session = { "n", "<C-S>" },
+          copy_session = { "n", "<C-Y>" },
         },
 
         session_control = {

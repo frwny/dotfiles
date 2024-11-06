@@ -134,6 +134,7 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 nnoremap <Leader>b :Telescope buffers<CR>
 nnoremap <Leader>gg :Git 
+nnoremap <Leader>ss :SessionSave 
 nnoremap <Leader>gb :Telescope git_branches layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>sr :Telescope session-lens layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gl :Telescope git_commits layout_config={preview_width=0.6}<CR>
