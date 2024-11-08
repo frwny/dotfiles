@@ -125,6 +125,7 @@ set noautochdir
 syntax enable
 colorscheme nord
 set t_u7=
+set sessionoptions+=winpos,terminal,folds
 
 "##########################################
 
@@ -169,6 +170,8 @@ map <silent> <C-k> <C-W>k
 map <silent> <C-j> <C-W>j
 map <silent> <C-h> <C-W>h
 map <silent> <C-l> <C-W>l
+map <silent> <Leader>v :vsp %<CR>
+map <silent> <Leader>h :sp %<CR>
 
 " Use c-s-[hjkl] to resize split
 nnoremap <silent> <C-S-k> :resize +10<CR>
