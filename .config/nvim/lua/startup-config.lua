@@ -10,8 +10,3 @@ require('startup').setup({
     paddings = {1,2}, -- amount of empty lines before each section (must be equal to amount of sections)
   }
 })
-
-require"startup".create_mappings({
-  ["<leader>ll"]="<cmd>Telescope find_files<CR>",
-  ["<leader>lg"]="<cmd>Telescope live_grep<CR>"
-})

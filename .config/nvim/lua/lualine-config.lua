@@ -5,14 +5,14 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
     },
     ignore_focus = {},
-    always_divide_middle = true,
+    always_divide_middle = false,
     globalstatus = false,
     refresh = {
       statusline = 100,
@@ -40,12 +40,7 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {
-    lualine_a = {'buffers'},
-    lualine_b = {''},
-    lualine_c = {''},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {'tabs'}
+    lualine_a = { 'buffers' },
   },
   winbar = {},
   inactive_winbar = {},

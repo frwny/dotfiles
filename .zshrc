@@ -8,7 +8,7 @@ compinit
 
 #paths
 export EDITOR="nvim"
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/Users/ymn/.cargo/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:/Users/ymn/.cargo/bin:$PATH
 
 #syntax highlighting
 source /Users/ymn/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

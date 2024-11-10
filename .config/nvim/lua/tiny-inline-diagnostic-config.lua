@@ -34,7 +34,7 @@ require('tiny-inline-diagnostic').setup({
 		softwrap = 15,
 
 		-- If multiple diagnostics are under the cursor, display all of them.
-		multiple_diag_under_cursor = false,
+		multiple_diag_under_cursor = true,
 
 		-- Enable diagnostic message on all lines.
 		multilines = false,
@@ -47,7 +47,7 @@ require('tiny-inline-diagnostic').setup({
 			--    - wrap: when the message is too long, it is then displayed on multiple lines.
 			--    - none: the message will not be truncated.
 			--    - oneline: message will be displayed entirely on one line.
-			mode = "oneline",
+			mode = "wrap",
 		},
 
 		-- Format the diagnostic message.

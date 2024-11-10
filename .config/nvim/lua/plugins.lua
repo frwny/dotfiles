@@ -31,21 +31,14 @@ return require('packer').startup(function(use)
   }
 
 -- utility plugins
--- use {
   use 'rmagatti/auto-session'
   use 'ggandor/leap.nvim'
   use 'tpope/vim-commentary'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'kylechui/nvim-surround'
   use 'nvim-telescope/telescope.nvim'
-  use "windwp/nvim-autopairs"
-  use { 'lambdalisue/fern.vim',
-    requires = {
-      { 'lambdalisue/glyph-palette.vim' },
-      { 'TheLeoP/fern-renderer-web-devicons.nvim' },
-      { 'lambdalisue/fern-git-status.vim' }
-    }
-  }
+  use 'windwp/nvim-autopairs'
+  use 'nvim-tree/nvim-tree.lua'
 end)
 
 

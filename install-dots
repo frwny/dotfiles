@@ -1,0 +1,26 @@
+#!/bin/bash
+
+install_dots() {
+  echo "========= copying vimrc ========="
+  cp -v ./vimrc ~/.vimrc && printf "\n"
+
+  echo "========= copying zshrc ========="
+  cp -v ./zshrc ~/.zshrc && printf "\n"
+  
+  echo "========= copying nvim lua configs ========="
+  cp -v .config/nvim/lua/* ~/.config/nvim/lua/ && printf "\n"
+
+  echo "========= copying startup.nvim dashboard ========="
+  cp -v ~/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
+    ~/git/dotfiles/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
+    && printf "\n"
+}
+
+printf "Your installed dotfiles will be overwritten. \n\nAre you sure you want to continue? y/n\n"
+read -r install
+if [ "$install" != "${install#[Yy]}" ] ;then 
+  install_dots
+else
+  exit
+fi
+

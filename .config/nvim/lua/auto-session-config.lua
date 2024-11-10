@@ -4,6 +4,7 @@ require("auto-session").setup {
       enabled = true, -- Enables/disables auto creating, saving and restoring
       root_dir = vim.fn.stdpath "data" .. "/sessions/", -- Root dir where sessions will be stored
       auto_save = true, -- Enables/disables auto saving session on exit
+      auto_create = false,
       auto_restore = false, -- Enables/disables auto restoring session on start
       allowed_dirs = nil, -- Allow session restore/create in certain directories
       close_unsupported_windows = true, -- Close windows that aren't backed by normal file before autosaving a session
@@ -20,8 +21,8 @@ require("auto-session").setup {
           --   width = 0.8,    -- percent of window
           --   height = 0.5,
           -- },
+          previewer = false,
         },
-        previewer = false, -- File preview for session picker
 
         mappings = {
           -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode

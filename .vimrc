@@ -5,17 +5,19 @@ filetype off
 lua << EOF
 require('plugins')
 require('lualine-config')
-require('leap').create_default_mappings()
 require('treesitter-config')
 require('telescope-config')
 require('startup-config')
 require('auto-session-config')
+require('nvim-tree-config')
+require('everforest-config')
+
 require('nvim-surround').setup()
 require('nvim-autopairs').setup()
-require('everforest').setup({
-  background = "hard"
+require('leap').create_default_mappings()
+require('ibl').setup({
+  indent = { char = "▏"},
 })
-
 
 require('lsp-config')
 require('tiny-inline-diagnostic-config')
@@ -78,13 +80,6 @@ let g:nord_italic = v:false
 let g:nord_uniform_diff_background = v:true
 let g:nord_bold = v:false
 
-"Fern settings
-let g:fern#renderer = "nvim-web-devicons"
-let g:glyph_palette#palette = v:lua.require'fr-web-icons'.palette()
-let g:fern#default_hidden = 0
-
-
-
 "##########################################
 
 " ctrlp settings
@@ -96,7 +91,6 @@ set backspace=indent,eol,start
 set relativenumber
 set number
 set guicursor=
-set ruler
 set number
 set showcmd
 set incsearch
@@ -119,17 +113,17 @@ set smartcase " search via smartcase
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set splitbelow
 set splitright
+set splitbelow
 set showmatch
 set foldmethod=indent
 set foldlevel=99
-set noautochdir
+set autochdir
 syntax enable
-let g:everforest_background = 'soft'
 colorscheme everforest
 set t_u7=
 set sessionoptions+=winpos,terminal,folds
+set fillchars=eob:\ 
 
 "##########################################
 
@@ -137,61 +131,58 @@ set sessionoptions+=winpos,terminal,folds
 "LEADER"
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-nnoremap <Leader>b :Telescope buffers<CR>
+nnoremap <Leader>bb :Telescope buffers<CR>
 nnoremap <Leader>gg :Git 
 nnoremap <Leader>ss :SessionSave 
 nnoremap <Leader>gb :Telescope git_branches layout_config={preview_width=0.6}<CR>
-nnoremap <Leader>sr :Telescope session-lens layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>sr :Telescope session-lens<CR>
 nnoremap <Leader>gl :Telescope git_commits layout_config={preview_width=0.6}<CR>
 nnoremap <Leader>gs :Telescope git_status<CR>
 nnoremap <Leader>of :Telescope oldfiles<CR>
-nnoremap <Leader>k :lua require'telescope-config'.project_files()<CR>
-nnoremap <S-CR> za
 nnoremap <Leader>y "+yy
 vnoremap <Leader>y "+y
 nnoremap <silent> <Leader>z :ZenMode<CR>
 
-"terminal
+"te:minal
 command! Term :bot 10sp | term
 autocmd TermOpen term://* startinsert
+autocmd TermOpen * setlocal nonumber norelativenumber
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Leader>ft :Term<CR>
 
 " grep/search
-nnoremap <Leader>ff :Telescope git_files hidden=true no_ignore=true layout_config={preview_width=0.6}<CR>
+nnoremap <Leader>ff :lua require('pickers').project_files({ hidden=true, no_ignore=true, layout_config={preview_width=0.6} })<CR>
 nnoremap <Leader>lg :Telescope live_grep<CR>
 nnoremap <Leader>gs :Telescope grep_string<CR>
 nnoremap <Leader>fb :Telescope file_browser<CR>
-nnoremap <Leader>q :Telescope quickfix layout_strategy=vertical layout_config={width=0.7}<CR>
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
 
 " json formatting
-command Json :%!jq .
+" command JsonLint :%!jq .
 
-" Use ctrl-[hjkl] to select the active split!
-map <silent> <C-k> <C-W>k
-map <silent> <C-j> <C-W>j
-map <silent> <C-h> <C-W>h
-map <silent> <C-l> <C-W>l
-map <silent> <Leader>v :vsp %<CR>
-map <silent> <Leader>h :sp %<CR>
-
-" Use c-s-[hjkl] to resize split
-nnoremap <silent> <C-S-k> :resize +10<CR>
-nnoremap <silent> <C-S-j> :resize -10<CR>
-nnoremap <silent> <C-S-h> :vertical-resize -10<CR>
-nnoremap <silent> <C-S-l> :vertical-resize +10<CR>
+" Splits
+map <silent> <S-k> <C-W>k
+map <silent> <S-j> <C-W>j
+map <silent> <S-h> <C-W>h
+map <silent> <S-l> <C-W>l
+nnoremap <silent> <Leader>v :vsp %<CR>
+nnoremap <silent> <Leader>x :sp %<CR>
+nnoremap <Leader>c :close<CR>
+nnoremap <silent> <C-k> :resize +10<CR>
+nnoremap <silent> <C-j> :resize -10<CR>
+nnoremap <silent> <C--> :vertical resize -10<CR>
+nnoremap <silent> <C-=> :vertical resize +10<CR>
 
 " Buffer switching
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
-map gd :bd!<CR>
+map <Leader>bd :bd!<CR>
 
-"Fern toggle
-nnoremap <silent> <leader>p :Fern . -drawer -toggle -reveal=% -width=30<CR>
+" Fern 
+nnoremap <silent> <leader>p :NvimTreeToggle .<CR>
 
-"lsp
+" lsp
 nnoremap <Leader>l :LspRestart<CR>
 
 "########################################
@@ -216,6 +207,9 @@ set foldtext=MyFoldText()
 
 autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
 autocmd BufWritePre *.tf lua vim.lsp.buf.format()
+
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline nocursorcolumn
 
 lua << EOF
 vim.lsp.set_log_level("debug")
