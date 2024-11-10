@@ -12,6 +12,9 @@ require('startup-config')
 require('auto-session-config')
 require('nvim-surround').setup()
 require('nvim-autopairs').setup()
+require('everforest').setup({
+  background = "hard"
+})
 
 
 require('lsp-config')
@@ -123,7 +126,8 @@ set foldmethod=indent
 set foldlevel=99
 set noautochdir
 syntax enable
-colorscheme nord
+let g:everforest_background = 'soft'
+colorscheme everforest
 set t_u7=
 set sessionoptions+=winpos,terminal,folds
 

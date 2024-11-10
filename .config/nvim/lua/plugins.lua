@@ -9,11 +9,12 @@ return require('packer').startup(function(use)
   use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
   use 'j-hui/fidget.nvim'
+  use 'neanias/everforest-nvim'
   use {
     "startup-nvim/startup.nvim",
-      requires = {
-        "nvim-telescope/telescope-file-browser.nvim"
-      },
+    requires = {
+      "nvim-telescope/telescope-file-browser.nvim"
+    },
   }
 
 -- git plugins

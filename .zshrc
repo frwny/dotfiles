@@ -8,13 +8,13 @@ compinit
 
 #paths
 export EDITOR="nvim"
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/Users/ymn/.cargo/bin:$PATH
 
 #syntax highlighting
-#source /Users/Yegor.Milyaev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[path]=none
-#ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+source /Users/ymn/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 #prompt and colours
 # autoload -U colors && colors 
@@ -25,14 +25,13 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # PROMPT=%F{4}">> "%f
 #export PROMPT='%{$fg[yellow]%}➤ %{${fg[cyan]}%}%1~%{${fg[cyan]}%}%{${fg[magenta]}%}$(parse_git_branch) %{${fg[default]}%}'
 
-#kittens
-alias ssh="kitten ssh"
-alias icat="kitten icat"
-alias diff="kitten diff"
-
+# kitty aliases
+alias icat="kitty +kitten icat"
+alias diff="kitty +kitten diff"
 
 #aliases
 alias jukebox="mpv http://fig.whatbox.ca:3003 > /dev/null 2>&1 &"
+alias gotop="gotop -c nord --celsius"
 alias vim="nvim"
 alias suspend="systemctl suspend"
 alias poweroff="systemctl poweroff"

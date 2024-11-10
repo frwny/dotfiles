@@ -8,8 +8,8 @@ local settings = {
         title = "Header",
         margin = 5,
         content = require("startup.headers").gate_banner,
-        highlight = "Statement",
-        default_color = "#81A1C1",
+        highlight = "",
+        default_color = "#A7C080",
         oldfiles_amount = 0,
     },
     -- name which will be displayed and command
@@ -29,7 +29,7 @@ local settings = {
             { " New File", "lua require'startup'.new_file()", "<leader>nf" },
         },
         highlight = "",
-        default_color = "#A3BE8C",
+        default_color = "#7FBBB3",
         oldfiles_amount = 0,
     },
     footer = {
@@ -41,7 +41,7 @@ local settings = {
         margin = 5,
         content = require("startup.headers").gate_footer,
         highlight = "",
-        default_color = "#81A1C1",
+        default_color = "#A7C080",
         oldfiles_amount = 0,
     },
 
@@ -60,7 +60,7 @@ local settings = {
         open_help = "?",
     },
     colors = {
-        background = "#2E3440",
+        background = "#272E33",
         folded_section = "#56b6c2",
     },
     parts = { "header", "body", "footer" },
