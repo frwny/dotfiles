@@ -2,10 +2,10 @@
 
 install_dots() {
   echo "========= copying vimrc ========="
-  cp -v ./vimrc ~/.vimrc && printf "\n"
+  cp -v ./.vimrc ~/.vimrc && printf "\n"
 
   echo "========= copying zshrc ========="
-  cp -v ./zshrc ~/.zshrc && printf "\n"
+  cp -v ./.zshrc ~/.zshrc && printf "\n"
   
   echo "========= copying nvim lua configs ========="
   cp -v .config/nvim/lua/* ~/.config/nvim/lua/ && printf "\n"
