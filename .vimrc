@@ -211,6 +211,12 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline nocursorcolumn
 
+augroup cdpwd
+    autocmd!
+    autocmd VimEnter * cd $PWD
+augroup END
+
+
 lua << EOF
 vim.lsp.set_log_level("debug")
 EOF
