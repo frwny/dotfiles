@@ -29,7 +29,7 @@ local settings = {
             { " New File", "lua require'startup'.new_file()", "<leader>nf" },
         },
         highlight = "",
-        default_color = #7FBBB3",
+        default_color = "#7FBBB3",
         oldfiles_amount = 0,
     },
     footer = {
