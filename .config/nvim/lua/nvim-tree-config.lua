@@ -73,7 +73,7 @@ end
 
 require("nvim-tree").setup({
   on_attach = keymaps,
-  sync_root_with_cwd = true,
+  sync_root_with_cwd = false,
   sort = {
     sorter = "case_sensitive",
   },

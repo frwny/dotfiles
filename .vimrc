@@ -118,7 +118,7 @@ set splitbelow
 set showmatch
 set foldmethod=indent
 set foldlevel=99
-set autochdir
+set noautochdir
 syntax enable
 colorscheme everforest
 set t_u7=
@@ -180,7 +180,7 @@ map <S-Tab> :bp<CR>
 map <Leader>bd :bd!<CR>
 
 " Fern 
-nnoremap <silent> <leader>p :NvimTreeToggle .<CR>
+nnoremap <silent> <leader>p :NvimTreeToggle $PWD<CR>
 
 " lsp
 nnoremap <Leader>l :LspRestart<CR>
