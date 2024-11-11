@@ -122,7 +122,7 @@ set autochdir
 syntax enable
 colorscheme everforest
 set t_u7=
-set sessionoptions+=winpos,terminal,folds
+set sessionoptions+=winpos
 set fillchars=eob:\ 
 
 "##########################################

@@ -1,10 +1,10 @@
 require("auto-session").setup {
-      suppressed_dirs = { "~/Downloads", "/", "~/git/dotfiles"},
+      suppressed_dirs = { "~/Downloads", "/", "~/git/dotfiles" },
       bypass_save_filetypes = { "startup" },
       enabled = true, -- Enables/disables auto creating, saving and restoring
       root_dir = vim.fn.stdpath "data" .. "/sessions/", -- Root dir where sessions will be stored
       auto_save = true, -- Enables/disables auto saving session on exit
-      auto_create = false,
+      auto_create = true,
       auto_restore = false, -- Enables/disables auto restoring session on start
       allowed_dirs = nil, -- Allow session restore/create in certain directories
       close_unsupported_windows = true, -- Close windows that aren't backed by normal file before autosaving a session
