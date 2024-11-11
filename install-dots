@@ -11,8 +11,8 @@ install_dots() {
   cp -v .config/nvim/lua/* ~/.config/nvim/lua/ && printf "\n"
 
   echo "========= copying startup.nvim dashboard ========="
-  cp -v ~/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
-    ~/git/dotfiles/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
+  cp -v ./.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
+    ~/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
     && printf "\n"
 }
 
