@@ -168,7 +168,7 @@ map <silent> <S-h> <C-W>h
 map <silent> <S-l> <C-W>l
 nnoremap <silent> <Leader>v :vsp %<CR>
 nnoremap <silent> <Leader>x :sp %<CR>
-nnoremap <Leader>c :close<CR>
+nnoremap <Leader>wc :close<CR>
 nnoremap <silent> <C-k> :resize +10<CR>
 nnoremap <silent> <C-j> :resize -10<CR>
 nnoremap <silent> <C--> :vertical resize -10<CR>
