@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
-  use 'j-hui/fidget.nvim'
   use 'neanias/everforest-nvim'
   use {
     "startup-nvim/startup.nvim",
@@ -25,6 +24,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
   use 'rachartier/tiny-inline-diagnostic.nvim'
+  use 'j-hui/fidget.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -32,7 +32,6 @@ return require('packer').startup(function(use)
 
 -- utility plugins
   use 'rmagatti/auto-session'
-  use 'ggandor/leap.nvim'
   use 'tpope/vim-commentary'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'kylechui/nvim-surround'
