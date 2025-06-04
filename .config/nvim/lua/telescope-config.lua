@@ -15,6 +15,11 @@ require('telescope').setup {
     },
   },
   defaults = require('telescope.themes').get_ivy {
+    pickers = {
+      find_files = {
+        hidden = true
+      }
+    },
     -- Use grep wihtout rg dependency
     vimgrep_arguments = {
       "grep",

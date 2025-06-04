@@ -60,15 +60,19 @@ vim.g.mapleader = " "
 --Telescope bindings
 local builtin = require("telescope.builtin")
 local pickers = require("pickers")
-vim.keymap.set("n", "<Leader>bb", "<cmd>echo 'Hello'<CR>")
+vim.keymap.set("n", "<Leader>bb", builtin.buffers, {})
 vim.keymap.set("n", "<Leader>gb", builtin.git_branches, {})
 vim.keymap.set("n", "<Leader>gl", builtin.git_commits, {})
 vim.keymap.set("n", "<Leader>gs", builtin.git_status, {})
 vim.keymap.set("n", "<Leader>of", builtin.oldfiles, {})
 vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
 vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
-vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
+vim.keymap.set("n", "<Leader>ff", function()
+  builtin.find_files {
+    hidden = true,
+  }
+end, {})
 vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>SessionSearch<CR>")
 
