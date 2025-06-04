@@ -23,6 +23,7 @@ require('telescope').setup {
         "--with-filename",
         "--line-number",
         "-b", -- grep doesn't support a `--column` option :(
+        "-a",
         "--ignore-case",
         "--recursive",
         "--no-messages",

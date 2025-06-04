@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
   use 'kylechui/nvim-surround'
   use 'nvim-telescope/telescope.nvim'
   use 'windwp/nvim-autopairs'
-  use 'nvim-tree/nvim-tree.lua'
+  -- use 'nvim-tree/nvim-tree.lua'
 end)
 
 

@@ -5,7 +5,6 @@ require('treesitter-config')
 require('telescope-config')
 require('startup-config')
 require('auto-session-config')
-require('nvim-tree-config')
 require('everforest-config')
 require('nvim-surround').setup()
 require('nvim-autopairs').setup()
@@ -15,6 +14,8 @@ require('tiny-inline-diagnostic-config')
 vim.diagnostic.config({
   virtual_text = false
 })
+
+
 
 -- Line numbers
 vim.o.number = true
@@ -57,16 +58,19 @@ vim.cmd([[colorscheme everforest]])
 vim.g.mapleader = " "
 
 --Telescope bindings
-vim.keymap.set("n", "<Leader>bb", "Telescope.builtin.buffers, {}")
-vim.keymap.set("n", "<Leader>gb", "Telescope.builtin.git_branches, {}")
-vim.keymap.set("n", "<Leader>sr", "Telescope.builtin.session-lens, {}")
-vim.keymap.set("n", "<Leader>gl", "Telescope.builtin.git_commits, {}")
-vim.keymap.set("n", "<Leader>gs", "Telescope.builtin.git_status, {}")
-vim.keymap.set("n", "<Leader>of", "Telescope.builtin.oldfiles, {}")
-vim.keymap.set("n", "<Leader>lg", "Telescope.builtin.live_grep, {}")
-vim.keymap.set("n", "<Leader>gs", "Telescope.builtin.grep_string, {}")
-vim.keymap.set("n", "<Leader>fb", "Telescope.builtin.file_browser, {}")
-vim.keymap.set("n", "<Leader>ff", "Telescope.builtin.project_files, {}")
+local builtin = require("telescope.builtin")
+local pickers = require("pickers")
+vim.keymap.set("n", "<Leader>bb", "<cmd>echo 'Hello'<CR>")
+vim.keymap.set("n", "<Leader>gb", builtin.git_branches, {})
+vim.keymap.set("n", "<Leader>gl", builtin.git_commits, {})
+vim.keymap.set("n", "<Leader>gs", builtin.git_status, {})
+vim.keymap.set("n", "<Leader>of", builtin.oldfiles, {})
+vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
+vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
+vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
+vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
+vim.keymap.set("n", "<Leader>sr", "<cmd>SessionSearch<CR>")
 
 -- Split keybinds
 vim.keymap.set("n", "<S-k>", "<C-W>k")
@@ -92,8 +96,8 @@ vim.keymap.set("n", "<Leader>ss", "<cmd>SessionSave ")
 vim.keymap.set("n", "<Leader>y", "\"+yy")
 vim.keymap.set("v", "<Leader>y", "\"+y")
 vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
-vim.keymap.set("n", "<leader>p", ":NvimTreeToggle $PWD<CR>")
 vim.keymap.set("n", "<Leader>l", ":LspRestart<CR>")
+-- vim.keymap.set("n", "<leader>p", ":NvimTreeToggle $PWD<CR>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
