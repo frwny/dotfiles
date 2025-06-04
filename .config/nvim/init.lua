@@ -95,6 +95,9 @@ vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
 vim.keymap.set("n", "<leader>p", ":NvimTreeToggle $PWD<CR>")
 vim.keymap.set("n", "<Leader>l", ":LspRestart<CR>")
 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Terminal
 -- command! Term :bot 10sp | term
 -- autocmd TermOpen term://* startinsert
