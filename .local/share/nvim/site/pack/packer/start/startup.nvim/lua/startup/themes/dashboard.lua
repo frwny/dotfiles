@@ -22,7 +22,8 @@ local settings = {
         margin = 2,
         content = {
             { " Session Restore", "SessionSearch", "<leader>sr" },
-            { " Find File", "Telescope find_files", "<leader>ff" },
+            { " Git File", "Telescope git_files", "<leader>pf" },
+            { " Find File", "Telescope find_files hidden=true", "<leader>ff" },
             { "󰍉 Find Word", "Telescope live_grep", "<leader>lg" },
             { " Recent Files", "Telescope oldfiles", "<leader>of" },
             { " File Browser", "Telescope file_browser", "<leader>fb" },

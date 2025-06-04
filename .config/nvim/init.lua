@@ -95,16 +95,16 @@ vim.keymap.set("n", "<S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bd!<CR>")
 
 -- Misc keybinds
-vim.keymap.set("n", "<Leader>gg", "<cmd>Git ")
-vim.keymap.set("n", "<Leader>ss", "<cmd>SessionSave ")
+vim.keymap.set("n", "<Leader>gg", ":Git ")
+vim.keymap.set("n", "<Leader>ss", ":SessionSave ")
 vim.keymap.set("n", "<Leader>y", "\"+yy")
 vim.keymap.set("v", "<Leader>y", "\"+y")
-vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
-vim.keymap.set("n", "<Leader>l", ":LspRestart<CR>")
--- vim.keymap.set("n", "<leader>p", ":NvimTreeToggle $PWD<CR>")
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
+vim.keymap.set("n", "<Leader>l", "<cmd>LspRestart<CR>")
+-- vim.keymap.set("n", "<leader>p", ":NvimTreeToggle $PWD<CR>")
+
 
 -- Terminal
 -- command! Term :bot 10sp | term
