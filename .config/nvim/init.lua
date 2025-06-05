@@ -11,9 +11,6 @@ require('nvim-autopairs').setup()
 
 require('lsp-config')
 require('tiny-inline-diagnostic-config')
-vim.diagnostic.config({
-  virtual_text = false
-})
 
 
 
@@ -103,8 +100,13 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
 vim.keymap.set("n", "<Leader>l", "<cmd>LspRestart<CR>")
--- vim.keymap.set("n", "<leader>p", ":NvimTreeToggle $PWD<CR>")
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.tf, *.tfvars" },
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+})
 
 -- Terminal
 -- command! Term :bot 10sp | term
@@ -117,8 +119,6 @@ vim.keymap.set("n", "<Leader>l", "<cmd>LspRestart<CR>")
 -- command JsonLint :%!jq .
 
 
--- autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
--- autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 
 -- au WinLeave * set nocursorline nocursorcolumn
 -- au WinEnter * set cursorline nocursorcolumn

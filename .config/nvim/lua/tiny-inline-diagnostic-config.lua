@@ -80,3 +80,4 @@ require('tiny-inline-diagnostic').setup({
         overwrite_events = nil,
 	},
 })
+vim.diagnostic.config({ virtual_text = false })
