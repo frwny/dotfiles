@@ -12,6 +12,7 @@ require('nvim-autopairs').setup()
 require('lsp-config')
 require('mason-config')
 require('tiny-inline-diagnostic-config')
+require('blink-config')
 
 
 

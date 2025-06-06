@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
 
 -- lsp, syntax and linting plugins
   use 'neovim/nvim-lspconfig'
+  use 'saghen/blink.cmp'
   use 'https://github.com/mason-org/mason.nvim'
   -- use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
   use 'rachartier/tiny-inline-diagnostic.nvim'
