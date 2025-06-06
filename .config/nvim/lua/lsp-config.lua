@@ -39,3 +39,31 @@ lspconfig.lua_ls.setup{
     Lua = {}
   }
 }
+
+
+local function client_supports_method(client, method, bufnr)
+  if vim.fn.has 'nvim-0.11' == 1 then
+    return client:supports_method(method, bufnr)
+  else
+    return client.supports_method(method, { bufnr = bufnr })
+  end
+end
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  callback = function(event)
+    local map = function(keys, func, desc, mode)
+      mode = mode or 'n'
+      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
+
+    -- Rename the variable under your cursor.
+    map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+
+    -- Find references for the word under your cursor.
+    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+
+    -- Jump to the definition of the word under your cursor.
+    map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+  end,
+})
