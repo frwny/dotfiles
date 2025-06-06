@@ -6,12 +6,12 @@ require('telescope-config')
 require('startup-config')
 require('auto-session-config')
 require('everforest-config')
-require('mason-config')
 require('nvim-surround').setup()
 require('nvim-autopairs').setup()
 
 require('lsp-config')
--- require('tiny-inline-diagnostic-config')
+require('mason-config')
+require('tiny-inline-diagnostic-config')
 
 
 
