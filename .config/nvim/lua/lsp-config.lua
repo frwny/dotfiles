@@ -4,6 +4,8 @@ lspconfig.terraformls.setup{}
 
 lspconfig.bashls.setup{}
 
+lspconfig.pyright.setup{}
+
 lspconfig.lua_ls.setup{
   on_init = function(client)
     if client.workspace_folders then

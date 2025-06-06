@@ -6,11 +6,12 @@ require('telescope-config')
 require('startup-config')
 require('auto-session-config')
 require('everforest-config')
+require('mason-config')
 require('nvim-surround').setup()
 require('nvim-autopairs').setup()
 
 require('lsp-config')
-require('tiny-inline-diagnostic-config')
+-- require('tiny-inline-diagnostic-config')
 
 
 
@@ -70,7 +71,7 @@ vim.keymap.set("n", "<Leader>ff", function()
     hidden = true,
   }
 end, {})
-vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
+vim.keymap.set("n", "<Leader>fb", "<cmd>Ex<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>SessionSearch<CR>")
 
 -- Split keybinds
