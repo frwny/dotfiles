@@ -66,12 +66,7 @@ vim.keymap.set("n", "<Leader>gs", builtin.git_status, {})
 vim.keymap.set("n", "<Leader>of", builtin.oldfiles, {})
 vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
 vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
-vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
-vim.keymap.set("n", "<Leader>ff", function()
-  builtin.find_files {
-    hidden = true,
-  }
-end, {})
+vim.keymap.set("n", "<Leader>ff", pickers.project_files, {})
 vim.keymap.set("n", "<Leader>fb", "<cmd>Ex<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>SessionSearch<CR>")
 
@@ -94,6 +89,7 @@ vim.keymap.set("n", "<S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bd!<CR>")
 
 -- Misc keybinds
+local quickfix = require("quickfix")
 vim.keymap.set("n", "<Leader>gg", ":Git ")
 vim.keymap.set("n", "<Leader>ss", ":SessionSave ")
 vim.keymap.set("n", "<Leader>y", "\"+yy")
@@ -102,6 +98,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
 vim.keymap.set("n", "<Leader>l", "<cmd>LspRestart<CR>")
+vim.keymap.set("n", "<Leader>qf", quickfix.toggle, {})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*.tf, *.tfvars" },
