@@ -55,6 +55,7 @@ vim.cmd([[colorscheme everforest]])
 
 -- Key mappings
 vim.g.mapleader = " "
+vim.g.neovide_input_macos_alt_is_meta = true
 
 --Telescope bindings
 local builtin = require("telescope.builtin")
@@ -67,7 +68,7 @@ vim.keymap.set("n", "<Leader>of", builtin.oldfiles, {})
 vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
 vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
 vim.keymap.set("n", "<Leader>ff", pickers.project_files, {})
-vim.keymap.set("n", "<Leader>fb", "<cmd>Ex<CR>")
+vim.keymap.set("n", "<Leader>fb", "<cmd>Lexplore<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>SessionSearch<CR>")
 
 -- Split keybinds
