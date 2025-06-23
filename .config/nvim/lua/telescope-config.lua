@@ -2,6 +2,7 @@ require('telescope').setup {
   defaults = require('telescope.themes').get_dropdown {
     layout_config = {
       width = 0.8,
+      anchor = "N",
     },
     -- Use grep wihtout rg dependency
     vimgrep_arguments = {
@@ -30,9 +31,6 @@ require('telescope').setup {
           ["<leader>bd"] = "delete_buffer"
         },
       },
-    },
-    git_commits = {
-      theme = "ivy"
     },
     find_files = {
       find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
