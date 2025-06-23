@@ -8,7 +8,7 @@ install_dots() {
   # ln -Fiv ./.zshrc ~/.zshrc && printf "\n"
   
   echo "========= linking nvim lua configs ========="
-  ln -Fiv .config/nvim/lua/* ~/.config/nvim/lua/ && printf "\n"
+  ln -Fiv .config/nvim/lua/* ~/.config/nvim/lua && printf "\n"
 
   echo "========= linking startup.nvim dashboard ========="
   ln -Fiv ./.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
