@@ -68,7 +68,7 @@ vim.keymap.set("n", "<Leader>of", builtin.oldfiles, {})
 vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
 vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
 vim.keymap.set("n", "<Leader>ff", pickers.project_files, {})
-vim.keymap.set("n", "<Leader>fb", "<cmd>Lexplore<CR>")
+vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>SessionSearch<CR>")
 
 -- Split keybinds
