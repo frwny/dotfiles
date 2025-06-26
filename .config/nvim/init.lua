@@ -8,6 +8,7 @@ require('auto-session-config')
 require('everforest-config')
 require('nvim-surround').setup()
 require('nvim-autopairs').setup()
+require('quicker').setup()
 
 require('lsp-config')
 require('mason-config')
