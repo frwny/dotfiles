@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 FOLDERS=(
 	"~/.config/nvim"
@@ -8,16 +8,16 @@ FOLDERS=(
 
 install_dots() {
   echo "========= linking init.lua  ========="
-  ln -Fiv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
+  ln -Ffv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
 
   # echo "========= linking zshrc ========="
-  # ln -Fiv ./.zshrc ~/.zshrc && printf "\n"
+  # ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
   
   echo "========= linking nvim lua configs ========="
-  ln -Fiv .config/nvim/lua/* ~/.config/nvim/lua && printf "\n"
+  ln -Ffv .config/nvim/lua/* ~/.config/nvim/lua && printf "\n"
 
   echo "========= linking startup.nvim dashboard ========="
-  ln -Fiv ./.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
+  ln -Ffv ./.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
     ~/.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
     && printf "\n"
 }

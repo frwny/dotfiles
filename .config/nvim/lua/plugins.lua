@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
 
 -- vanity plugins
   use 'nvim-lualine/lualine.nvim'
+  use 'dstein64/vim-startuptime'
   use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
   use 'neanias/everforest-nvim'
@@ -39,7 +40,7 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'windwp/nvim-autopairs'
   use 'stevearc/quicker.nvim'
-  use { 
+  use {
     'nvim-tree/nvim-tree.lua',
     requires = { 'nvim-tree/nvim-web-devicons' }
   }
