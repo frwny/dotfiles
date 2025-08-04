@@ -5,15 +5,14 @@ return require('packer').startup(function(use)
 
 -- vanity plugins
   use 'nvim-lualine/lualine.nvim'
-  use 'nvim-tree/nvim-web-devicons'
   use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
   use 'neanias/everforest-nvim'
   use {
-    "startup-nvim/startup.nvim",
-    requires = {
-      "nvim-telescope/telescope-file-browser.nvim"
-    },
+    'goolord/alpha-nvim',
+    config = function ()
+      require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
   }
 
 -- git plugins
@@ -40,7 +39,10 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'windwp/nvim-autopairs'
   use 'stevearc/quicker.nvim'
-  -- use 'nvim-tree/nvim-tree.lua'
+  use { 
+    'nvim-tree/nvim-tree.lua',
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  }
 end)
 
 

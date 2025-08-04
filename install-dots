@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/bash -x
+
+FOLDERS=(
+	"~/.config/nvim"
+	"~/.config/nvim/lua"
+	"~/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes"
+	)
 
 install_dots() {
   echo "========= linking init.lua  ========="
@@ -11,14 +17,21 @@ install_dots() {
   ln -Fiv .config/nvim/lua/* ~/.config/nvim/lua && printf "\n"
 
   echo "========= linking startup.nvim dashboard ========="
-  ln -Fiv ./.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
-    ~/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes/dashboard.lua \
+  ln -Fiv ./.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
+    ~/.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
     && printf "\n"
 }
 
 printf "Your installed dotfiles will be overwritten. \n\nAre you sure you want to continue? y/n\n"
+
 read -r install
 if [ "$install" != "${install#[Yy]}" ] ;then 
+  for folder in $FOLDERS; do
+	  if [ ! -d $folder ]; then
+	    mkdir -p $folder
+	  fi
+  done
+
   install_dots
 else
   exit

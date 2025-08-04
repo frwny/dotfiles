@@ -2,8 +2,8 @@
 require('plugins')
 require('lualine-config')
 require('treesitter-config')
+require('nvim-tree-config')
 require('telescope-config')
-require('startup-config')
 require('auto-session-config')
 require('everforest-config')
 require('nvim-surround').setup()
@@ -101,6 +101,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
 vim.keymap.set("n", "<Leader>l", "<cmd>LspRestart<CR>")
+vim.keymap.set("n", "<Leader>fb", "<cmd>NvimTreeToggle<CR>")
 vim.keymap.set("n", "<Leader>qf", quickfix.toggle, {})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
