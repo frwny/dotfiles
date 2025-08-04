@@ -4,11 +4,8 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
 
 -- vanity plugins
-  use 'nvim-lualine/lualine.nvim'
   use 'dstein64/vim-startuptime'
-  use 'gbprod/nord.nvim'
   use 'folke/zen-mode.nvim'
-  use 'neanias/everforest-nvim'
   use {
     'goolord/alpha-nvim',
     config = function ()
@@ -33,7 +30,6 @@ return require('packer').startup(function(use)
   }
 
 -- utility plugins
-  use 'rmagatti/auto-session'
   use 'tpope/vim-commentary'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'kylechui/nvim-surround'
