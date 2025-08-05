@@ -76,7 +76,7 @@ vim.keymap.set("n", "<S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bd!<CR>")
 
 -- Misc keybinds
-local quickfix = require("plugins.quickfix")
+local quickfix = require('configs.quickfix')
 vim.keymap.set("n", "<Leader>gg", ":Git ")
 vim.keymap.set("n", "<Leader>ss", ":SessionSave ")
 vim.keymap.set("n", "<Leader>y", "\"+yy")
