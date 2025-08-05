@@ -8,10 +8,10 @@ compinit
 
 #paths
 export EDITOR="nvim"
-export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:/Users/ymn/.cargo/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 
 #syntax highlighting
-source /Users/ymn/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none

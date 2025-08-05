@@ -7,12 +7,15 @@ FOLDERS=(
 	)
 
 install_dots() {
+  echo "========= linking zshrc ========="
+  ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
+
+  echo "========= linking tmux.conf ========="
+  ln -Ffv ./.config/tmux/tmux.conf ~/.config/tmux/tmux.conf && printf "\n"
+
   echo "========= linking init.lua  ========="
   ln -Ffv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
 
-  echo "========= linking zshrc ========="
-  ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
-  
   echo "========= linking nvim lua configs ========="
   ln -Ffv .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/ && printf "\n"
 
@@ -35,6 +38,7 @@ if [ "$install" != "${install#[Yy]}" ] ;then
 	  fi
   done
 
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   install_dots
 else
   exit
