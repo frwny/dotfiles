@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -x
 
 FOLDERS=(
-	"~/.config/nvim"
-	"~/.config/nvim/lua"
+	"~/.config/nvim/lua/configs"
+	"~/.config/nvim/lua/plugins"
 	"~/.local/share/nvim/site/pack/packer/start/startup.nvim/lua/startup/themes"
 	)
 
@@ -14,7 +14,10 @@ install_dots() {
   # ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
   
   echo "========= linking nvim lua configs ========="
-  ln -Ffv .config/nvim/lua/* ~/.config/nvim/lua && printf "\n"
+  ln -Ffv .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/ && printf "\n"
+
+  echo "========= linking nvim lua plugins ========="
+  ln -Ffv .config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ && printf "\n"
 
   echo "========= linking startup.nvim dashboard ========="
   ln -Ffv ./.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
@@ -26,7 +29,7 @@ printf "Your installed dotfiles will be overwritten. \n\nAre you sure you want t
 
 read -r install
 if [ "$install" != "${install#[Yy]}" ] ;then 
-  for folder in $FOLDERS; do
+  for folder in ${FOLDERS[@]}; do
 	  if [ ! -d $folder ]; then
 	    mkdir -p $folder
 	  fi

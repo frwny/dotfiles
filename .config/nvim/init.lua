@@ -1,20 +1,5 @@
 -- Required plugins
-require('plugins')
-require('lualine-config')
-require('treesitter-config')
-require('nvim-tree-config')
-require('telescope-config')
-require('auto-session-config')
-require('everforest-config')
-require('nvim-surround').setup()
-require('nvim-autopairs').setup()
-require('quicker').setup()
-
-require('lsp-config')
-require('mason-config')
-require('tiny-inline-diagnostic-config')
--- require('blink-config')
-
+require('configs.lazy')
 
 
 -- Line numbers
@@ -59,8 +44,8 @@ vim.g.mapleader = " "
 vim.g.neovide_input_macos_alt_is_meta = true
 
 --Telescope bindings
-local builtin = require("telescope.builtin")
-local pickers = require("pickers")
+local builtin = require('telescope.builtin')
+local pickers = require('configs.pickers')
 vim.keymap.set("n", "<Leader>bb", builtin.buffers, {})
 vim.keymap.set("n", "<Leader>gb", builtin.git_branches, {})
 vim.keymap.set("n", "<Leader>gl", builtin.git_commits, {})
@@ -91,7 +76,7 @@ vim.keymap.set("n", "<S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bd!<CR>")
 
 -- Misc keybinds
-local quickfix = require("quickfix")
+local quickfix = require("plugins.quickfix")
 vim.keymap.set("n", "<Leader>gg", ":Git ")
 vim.keymap.set("n", "<Leader>ss", ":SessionSave ")
 vim.keymap.set("n", "<Leader>y", "\"+yy")
