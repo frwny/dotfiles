@@ -20,8 +20,8 @@ install_dots() {
   ln -Ffv .config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ && printf "\n"
 
   echo "========= linking startup.nvim dashboard ========="
-  ln -Ffv ./.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
-    ~/.local/share/nvim/site/pack/packer/start/alpha-nvim/lua/alpha/themes/dashboard.lua \
+  ln -Ffv .local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/dashboard.lua \
+    ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/dashboard.lua \
     && printf "\n"
 }
 
