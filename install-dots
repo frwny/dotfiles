@@ -10,8 +10,8 @@ install_dots() {
   echo "========= linking init.lua  ========="
   ln -Ffv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
 
-  # echo "========= linking zshrc ========="
-  # ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
+  echo "========= linking zshrc ========="
+  ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
   
   echo "========= linking nvim lua configs ========="
   ln -Ffv .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/ && printf "\n"

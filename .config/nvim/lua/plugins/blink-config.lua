@@ -8,10 +8,13 @@ return {
   opts = {
     appearance = {
       nerd_font_variant = mono,
+    },
+    keymap = { preset = 'super-tab' },
+    completion = {
+      ghost_text = { enabled = true },
+    },
+    cmdline = {
+      enabled = false,
     }
-    -- keymap = { preset = { super-tab } },
-    -- completion = {
-    --   ghost_text = { enabled = true },
-    -- }
   }
 }
