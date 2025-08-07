@@ -9,6 +9,7 @@ compinit
 #paths
 export EDITOR="nvim"
 export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export GPG_TTY=$(tty)
 
 #syntax highlighting
 source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
