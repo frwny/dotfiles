@@ -4,7 +4,7 @@ return {
   branch = 'master',
   lazy = false,
   require('nvim-treesitter.configs').setup {
-    auto_install = true,
+    auto_install = false,
     -- ensure_installed = { "hcl", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
     highlight = {
       enable = true,
