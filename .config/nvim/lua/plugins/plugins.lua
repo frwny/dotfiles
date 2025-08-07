@@ -4,7 +4,7 @@ return {
   -- lsp, syntax and linting plugins
   -- 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   'https://github.com/mason-org/mason.nvim',
-  'j-hui/fidget.nvim',
+  { 'j-hui/fidget.nvim', opts = {},},
   -- git plugins
   { 'tpope/vim-fugitive', event = 'VeryLazy' },
   { 'airblade/vim-gitgutter', event = 'VeryLazy' },

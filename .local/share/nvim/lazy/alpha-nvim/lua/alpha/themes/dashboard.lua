@@ -98,7 +98,6 @@ local buttons = {
       button( "<leader>sr", " Session Restore" ),
       button( "<leader>pf", " Project Files" ),
       button( "<leader>ff", " Find File" ),
-      button( "<leader>fb", "󰪶 File Browser" ),
       button( "<leader>lg", "󰍉 Find Word" ),
       button( "<leader>of", " Recent Files" ),
       button( "<leader>fb", " File Browser" ),
