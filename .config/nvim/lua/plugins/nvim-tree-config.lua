@@ -7,6 +7,7 @@ return {
   },
   config = function()
     require("nvim-tree").setup{
+      view = {},
       sync_root_with_cwd = false,
       sort = {
         sorter = "case_sensitive",

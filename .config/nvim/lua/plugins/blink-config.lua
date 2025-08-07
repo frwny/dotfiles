@@ -11,7 +11,7 @@ return {
     },
     keymap = { preset = 'super-tab' },
     completion = {
-      ghost_text = { enabled = true },
+      ghost_text = { enabled = false },
     },
     cmdline = {
       enabled = false,

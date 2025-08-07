@@ -10,9 +10,16 @@ return {
   { 'airblade/vim-gitgutter', event = 'VeryLazy' },
   -- utility plugins
   { 'tpope/vim-commentary', event = 'VeryLazy' },
-  { 'windwp/nvim-autopairs', event = "VeryLazy" },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   { 'stevearc/quicker.nvim', event = "VeryLazy" },
-  { 'lukas-reineke/indent-blankline.nvim', event = 'VeryLazy' },
+  { 'lukas-reineke/indent-blankline.nvim', 
+    event = 'VimEnter', 
+    require('ibl').setup(),
+    main = 'ibl',
+    opts = {
+      indent = { char = "│" },
+    }
+  },
 
   -- plugins that require setup
   {
@@ -25,6 +32,7 @@ return {
   {
     'goolord/alpha-nvim',
     lazy = false,
+    priority = 1000,
     config = function()
       require'alpha'.setup(require'alpha.themes.dashboard'.config)
     end
