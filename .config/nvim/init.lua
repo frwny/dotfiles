@@ -99,7 +99,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<Leader>z", "<cmd>ZenMode<CR>")
 vim.keymap.set("n", "<Leader>l", "<cmd>LspRestart<CR>")
-vim.keymap.set("n", "<Leader>fb", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<Leader>fb", "<cmd>NvimTreeFindFileToggle<CR>")
 vim.keymap.set("n", "<Leader>qf", quickfix.toggle, {})
 
 vim.api.nvim_create_autocmd("BufWritePre", {

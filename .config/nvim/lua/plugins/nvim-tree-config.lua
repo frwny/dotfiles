@@ -7,7 +7,6 @@ return {
   },
   config = function()
     require("nvim-tree").setup{
-      view = {},
       sync_root_with_cwd = false,
       sort = {
         sorter = "case_sensitive",
@@ -23,29 +22,8 @@ return {
         group_empty = true,
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
       },
     }
   end,
 }
--- require("nvim-tree").setup({
---   on_attach = keymaps,
---   sync_root_with_cwd = false,
---   sort = {
---     sorter = "case_sensitive",
---   },
---   view = {
---     width = 40,
---     signcolumn = "no",
---   },
---   renderer = {
---     indent_markers = {
---       enable = true,
---     },
---     group_empty = true,
---   },
---   filters = {
---     dotfiles = true,
---   },
--- })
-
