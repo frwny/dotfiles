@@ -2,7 +2,7 @@ return {
   'neanias/everforest-nvim',
   config = function()
     require("everforest").setup({
-      background = "medium",
+      background = "hard",
       on_highlights = function(hl, palette)
         hl.NvimTreeNormal = { fg = palette.fg, bg = palette.bg }
         hl.NvimTreeEndOfBuffer = { fg = palette.bg, bg = palette.bg }

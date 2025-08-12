@@ -1,0 +1,10 @@
+# look and feel
+font-family = "MesloLGM Nerd Font Mono"
+theme = "Everforest Dark - Hard"
+adjust-cell-width = -1
+adjust-cell-height = 3
+
+# mac-specific options
+macos-option-as-alt = true
+macos-titlebar-style = "tabs"
+

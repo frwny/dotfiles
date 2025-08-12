@@ -2,6 +2,7 @@
 
 FOLDERS=(
   ~/.config/tmux/
+  ~/.config/ghostty/
 	~/.config/nvim/lua/configs/
 	~/.config/nvim/lua/plugins/
 	~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/
@@ -16,6 +17,9 @@ install_dots() {
 
   echo "========= linking tmux.conf ========="
   ln -Ffv ./.config/tmux/tmux.conf ~/.config/tmux/tmux.conf && printf "\n"
+
+  echo "========= linking ghostty config ========="
+  ln -Ffv ./.config/ghostty/config ~/.config/ghostty/config
 
   echo "========= linking init.lua  ========="
   ln -Ffv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
