@@ -5,11 +5,18 @@ autoload -U compinit
 compinit
 
 #set default editor
+export EDITOR="nvim"
 
 #paths
-export EDITOR="nvim"
 export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 export GPG_TTY=$(tty)
+
+for f in ~/bin/*; do source $f; done
+
+function get_cluster_short() {
+  echo "$1" | cut -d \/ -f1
+}
+export KYBE_TMUX_CLUSTER_FUNCTION=get_cluster_short
 
 #syntax highlighting
 source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -28,7 +35,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # kitty aliases
 alias icat="kitty +kitten icat"
-alias diff="kitty +kitten diff"
 
 #aliases
 alias jukebox="mpv http://fig.whatbox.ca:3003 > /dev/null 2>&1 &"
