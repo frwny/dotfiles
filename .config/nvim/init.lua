@@ -1,5 +1,5 @@
 -- Required plugins
-require('configs.lazy')
+require('lazy_config')
 
 
 -- Line numbers

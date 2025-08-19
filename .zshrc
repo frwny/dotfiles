@@ -6,17 +6,15 @@ compinit
 
 #set default editor
 export EDITOR="nvim"
+export K9S_SKIN="everforest"
 
 #paths
 export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 export GPG_TTY=$(tty)
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
+
 
 for f in ~/bin/*; do source $f; done
-
-function get_cluster_short() {
-  echo "$1" | cut -d \/ -f1
-}
-export KYBE_TMUX_CLUSTER_FUNCTION=get_cluster_short
 
 #syntax highlighting
 source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

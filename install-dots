@@ -27,6 +27,9 @@ install_dots() {
   echo "========= linking nvim lua configs ========="
   ln -Ffv .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/ && printf "\n"
 
+  echo "========= linking nvim lazy config ========="
+  ln -Ffv .config/nvim/lua/* ~/.config/nvim/lua/ && printf "\n"
+
   echo "========= linking nvim lua plugins ========="
   ln -Ffv .config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ && printf "\n"
 
