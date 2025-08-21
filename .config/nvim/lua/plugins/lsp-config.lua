@@ -16,6 +16,9 @@ return {
     },
 
     config = function()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local lspconfig = require('lspconfig')
+
       local servers = {
         pyright = {},
         terraformls = {},
@@ -36,7 +39,11 @@ return {
         },
       }
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      -- just manually call setup per server
+      for name, opts in pairs(servers) do
+        opts.capabilities = capabilities
+        lspconfig[name].setup(opts)
+      end      
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -57,4 +64,4 @@ return {
         end,
       })
     end,
-}
+  }

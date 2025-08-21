@@ -66,7 +66,7 @@ function M.setup()
     filters = {
       dotfiles = false,
     },
-    on_attach = my_on_attach(),
+    on_attach = my_on_attach,
   })
 end
 
