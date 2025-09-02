@@ -7,4 +7,4 @@ adjust-cell-height = 3
 # mac-specific options
 macos-option-as-alt = true
 macos-titlebar-style = "tabs"
-
+confirm-close-surface = false

@@ -43,7 +43,7 @@ return {
       for name, opts in pairs(servers) do
         opts.capabilities = capabilities
         lspconfig[name].setup(opts)
-      end      
+      end 
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
