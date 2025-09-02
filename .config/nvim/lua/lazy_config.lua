@@ -63,6 +63,8 @@ require("lazy").setup({
       end
     },
 
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+
     { "goolord/alpha-nvim",
       lazy = false,
       priority = 1000,
