@@ -27,6 +27,13 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.g.indent_blankline_filetype_exclude = {'NvimTree'}
 
+-- Enable autoread and set up checking triggers
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
+})
+
 -- Misc
 vim.o.termguicolors = true
 vim.o.breakindent = true
