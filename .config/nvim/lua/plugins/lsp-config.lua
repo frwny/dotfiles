@@ -23,6 +23,7 @@ return {
         pyright = {},
         terraformls = {},
         bashls = {},
+        css_lsp = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
