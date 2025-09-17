@@ -67,17 +67,9 @@ vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>Autosession search<CR>")
 
 -- Split keybinds
-vim.keymap.set("n", "<S-k>", "<C-W>k")
-vim.keymap.set("n", "<S-j>", "<C-W>j")
-vim.keymap.set("n", "<S-h>", "<C-W>h")
-vim.keymap.set("n", "<S-l>", "<C-W>l")
 vim.keymap.set("n", "<Leader>v", ":vsp %<CR>")
 vim.keymap.set("n", "<Leader>h", ":sp %<CR>")
 vim.keymap.set("n", "<Leader>wc", ":close<CR>")
-vim.keymap.set("n", "<C-k>", ":resize +5<CR>")
-vim.keymap.set("n", "<C-j>", ":resize -5<CR>")
-vim.keymap.set("n", "<C-->", ":vertical resize -5<CR>")
-vim.keymap.set("n", "<C-=>", ":vertical resize +5<CR>")
 
 -- Tmux keybinds
 vim.keymap.set("n", "<M-h>", "<cmd>lua require('tmux').move_left()<cr>")
