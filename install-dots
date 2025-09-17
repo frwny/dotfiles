@@ -3,6 +3,7 @@
 FOLDERS=(
   ~/.config/tmux/
   ~/.config/ghostty/
+  ~/.config/aerospace/
 	~/.config/nvim/lua/configs/
 	~/.config/nvim/lua/plugins/
 	~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/
@@ -20,6 +21,9 @@ install_dots() {
 
   echo "========= linking ghostty config ========="
   ln -Ffv ./.config/ghostty/config ~/.config/ghostty/config && printf "\n"
+
+  echo "========= linking ghostty config ========="
+  ln -Ffv ./.config/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml && printf "\n"
 
   echo "========= linking init.lua  ========="
   ln -Ffv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
