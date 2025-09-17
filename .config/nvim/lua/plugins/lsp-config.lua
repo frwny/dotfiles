@@ -12,20 +12,46 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     local lspconfig = require('lspconfig')
 
+
     local servers = {
       pyright = {},
       terraformls = {},
       bashls = {},
       lua_ls = {
+        capabilities = capabilities,
         settings = {
           Lua = {
-            diagnostics = { globals = { 'vim' } },
-            completion = { callSnippet = 'Replace' },
+            runtime = {
+              -- tell lua_ls it’s neovim lua
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              globals = { 'vim' }, -- stop whining about vim
+              disable = { 'missing-fields' }, -- optional, kills noisy warnings
+            },
+            workspace = {
+              checkThirdParty = false, -- stop telemetry nags
+              library = vim.api.nvim_get_runtime_file('', true),
+            },
+            completion = {
+              callSnippet = 'Replace',
+            },
           },
         },
       },
     }
 
+    for name, opts in pairs(servers) do
+      lspconfig[name].setup(opts)
+    end
+
+    -- setup mason-lspconfig
+    require("mason-lspconfig").setup {
+      ensure_installed = vim.tbl_keys(servers),
+      automatic_enable = true,   -- auto-enable installed servers
+    }
+
+    -- configure each server manually
     for name, opts in pairs(servers) do
       opts.capabilities = capabilities
       lspconfig[name].setup(opts)
