@@ -18,7 +18,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 30
 
 # Possible values: tiles|accordion
-default-root-container-layout = 'tiles'
+default-root-container-layout = 'accordion'
 
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
@@ -93,13 +93,14 @@ automatically-unhide-macos-hidden-apps = true
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
-    alt-comma = 'layout accordion horizontal vertical'
+    alt-period = 'layout accordion horizontal vertical'
+    alt-f = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
+    alt-h = 'focus left --boundaries-action wrap-around-the-workspace'
+    alt-j = 'focus down --boundaries-action wrap-around-the-workspace
+    alt-k = 'focus up --boundaries-action wrap-around-the-workspace'
+    alt-l = 'focus right --boundaries-action wrap-around-the-workspace'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'
@@ -153,8 +154,7 @@ automatically-unhide-macos-hidden-apps = true
     # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
     #s = ['layout sticky tiling', 'mode main']
 
-2   alt-shift-h = ['join-with left', 'mode main']
-2   alt-shift-j = ['join-with down', 'mode main']
-2   alt-shift-k = ['join-with up', 'mode main']
-    alt-shift-l = ['join-with right', 'mode main']
-
+   alt-shift-h = ['join-with left', 'mode main']
+   alt-shift-j = ['join-with down', 'mode main']
+   alt-shift-k = ['join-with up', 'mode main']
+   alt-shift-l = ['join-with right', 'mode main']
