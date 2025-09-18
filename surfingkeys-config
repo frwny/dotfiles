@@ -27,6 +27,7 @@ const {
 settings.omnibarPosition = 'bottom';
 settings.smoothScroll = false;
 settings.scrollStepSize = 140;
+api.Hints.setCharacters('sdfjklerio');
 
 
 // ---- Map -----
@@ -50,8 +51,8 @@ map('B', 'b');
 // Choose a buffer/tab
 map('b', 'T');
 
-// Open URL in new tab
-map('t', 'o');
+// create a new key `t` for default key `on`
+map('t', 'on');
 
 // Edit current URL, and open in same tab
 map('O', ';U');
@@ -72,16 +73,27 @@ map('<Ctrl-f>', 'P');  // scroll full page down -- looks like we can't overwrite
 // Open Clipboard URL in new tab
 map('P', 'cc');
 
-// Next/Prev Page
-map('K', '[[');
-map('J', ']]');
-
 // --- Tabs ---
 mapkey('u', '#3Restore closed tab', () => { RUNTIME("openLast"); });
 
 // Change focused frame
 map('gf', 'w');
 
+cmap('<ArrowDown>', '<Shift-Tab>');
+cmap('<ArrowUp>', '<Tab>');
+//cmap('<Tab>', '<Shift-Tab>');
+//cmap('<Shift-Tab>', '<Tab>');
+
+unmap('Ctrl-h');
+unmap('Ctrl-j');
+unmap('Ctrl-k');
+unmap('Ctrl-l');
+
+// Nord
+Hints.style('border: solid 2px #495156; color:#D3C6AA; background: initial; background-color: #272e33; font-family: MesloLGM Nerd Font Mono; font-size: 14px;');
+Hints.style("border: solid 2px #495156 !important; padding: 1px !important; color: #D3C6AA !important; background: #272e33 !important; font-family: MesloLGM Nerd Font Mono; font-size: 14px;", "text");
+Visual.style('marks', 'background-color: #DBBC7F99;');
+Visual.style('cursor', 'background-color: #E67E80;');
 
 settings.theme = `
 /* Edit these variables for easy theme making */
@@ -100,7 +112,7 @@ settings.theme = `
   --border: #495156;       /* border */
   --accent-fg: #D3C6AA;    /* link title */
   --main-fg: #83c092;      /* link url */
-  --info-fg: #4c3743;
+  --info-fg: #e69875;
   --select: #4c3743;
 
   /* Unused Alternate Colors */
@@ -140,6 +152,7 @@ input {
 
 #sk_tabs {
 	position: fixed;
+	font-size: 14px;
 	top: 0;
 	left: 0;
     background-color: var(--bg);
@@ -170,22 +183,21 @@ input {
 
 
 #sk_tabs div.sk_tab:not(:has(.sk_tab_hint)) {
-	background-color: #181818 !important;
-	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8) !important;
-	border: 1px solid #181818;
-	border-radius: 20px;
+	background-color: #4c3743 !important;
+	border: 0px;
+	border-radius: 0px;
 	position: relative;
 	z-index: 1;
-	margin-left: 1.8rem;
-	padding-left: 0rem;
-	margin-right: 0.7rem;
+	margin-left: 0px;
+	padding-left: 2rem;
+	margin-right: 0rem;
 }
 
 
 #sk_tabs div.sk_tab_title {
 	display: inline-block;
 	vertical-align: middle;
-	font-size: 10pt;
+	font-size: 11pt;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
