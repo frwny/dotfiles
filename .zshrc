@@ -106,3 +106,4 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 source ~/.config/prompt.zsh
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

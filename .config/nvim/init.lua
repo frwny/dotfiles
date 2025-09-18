@@ -64,7 +64,7 @@ vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
 vim.keymap.set("n", "<Leader>fid", ":Telescope find_files cwd=")
 vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
-vim.keymap.set("n", "<Leader>sr", "<cmd>Autosession search<CR>")
+vim.keymap.set("n", "<Leader>sr", "<cmd>AutoSession search<CR>")
 
 -- Split keybinds
 vim.keymap.set("n", "<Leader>v", ":vsp %<CR>")
