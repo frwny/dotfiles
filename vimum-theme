@@ -1,3 +1,26 @@
+{
+  "actions": "",
+  "maxMatches": 25,
+  "queryInterval": 100,
+  "sizes": "77,3,44,0.8,95%",
+  "styles": "mono-url"
+}
+
+
+map t Vomnibar.activateInNewTab mode="search"
+map T Vomnibar.activateEditUrlInNewTab
+map b Vomnibar.activateTabs currentWindow tree="from-start"
+
+map <c-d> scrollPageDown
+map <c-u> scrollPageUp
+map <c-f> scrollFullPageDown
+map <c-b> scrollFullPageUp
+
+map J nextTab
+map K previousTab
+map u restoreTab
+
+
 /* #ui */
 * {
 /*insertroot*/
@@ -17,17 +40,6 @@
 --title-accent: #e69875; /* title accent */
 --link: #83c092;         /* link */
 --link-accent: #e69875;  /* link accent */
-  
-  /* ---------- NIGHT THEME ---------- */
---nbg: #272e33;           /* base background */
---nfg: #D3C6AA;           /* foreground */
---naccent-fg: #4c3743;    /* accent foreground */
---nborder: #495156;       /* border */
---ntitle: #d3c6aa;        /* title */
---ntitle-accent: #272e33; /* title accent */
---nlink: #83c092;         /* link */
---nlink-accent: #e69875;  /* link accent */
-  
 
   font-family: var(--font);
   font-size: var(--font-size-link);
@@ -45,18 +57,9 @@
   padding: 10px;
 }
 
-.HUD.D {
-  color: var(--ntitle);
-}
-
 .HUD:after {
   background: var(--bg);
   border: var(--border);
-}
-
-.HUD.D:after {
-  background: var(--nbg);
-  border: var(--nborder);
 }
 
 .HUD.UI {
@@ -72,26 +75,14 @@
   box-shadow: var(--shadow);
 }
 
-.D .LH {
-  color: var(--nfg);
-  border: 1px solid var(--nborder);
-  background: var(--nbg);
-  box-shadow: var(--shadow);
-}
-
 .MC {
   color: var(--title);
 }
 
-.D .MC {
-  color: var(--ntitle);
-}
-
-
 /* #omni */
 * {
 /*insertroot*/
-  --font-size: 14px;
+  --font-size: 12px;
   --font-size-link: 11px;
   --font-weight: normal;
   --font: MesloLGM Nerd Font Mono,  sans;
@@ -107,17 +98,6 @@
 --title-accent: #e69875; /* title accent */
 --link: #83c092;         /* link */
 --link-accent: #e69875;  /* link accent */
-  
-  /* ---------- NIGHT THEME ---------- */
---nbg: #272e33;           /* base background */
---nfg: #D3C6AA;           /* foreground */
---naccent-fg: #4c3743;    /* accent foreground */
---nborder: #495156;       /* border */
---ntitle: #d3c6aa;        /* title */
---ntitle-accent: #272e33; /* title accent */
---nlink: #83c092;         /* link */
---nlink-accent: #e69875;  /* link accent */
-
 
   font-family: var(--font);
   /*font-size: var(--font-size);*/
@@ -126,10 +106,6 @@
 body {
   animation: show 200ms cubic-bezier(0, 0, 0.2, 1) forwards;
   box-shadow: var(--shadow);
-}
-
-body.has-dark{
-
 }
 
 /* Animate Slide in */
@@ -158,9 +134,6 @@ body.has-dark{
   background: var(--bg);
   font-weight: var(--font-weight);
 }
-.has-dark #bar, .has-dark #input, .has-dark #list {
-  background: var(--nbg);
-}
 
 #bar{
   padding: 10px;
@@ -180,19 +153,11 @@ body.has-dark{
   color: var(--fg);
 }
 
-.has-dark #bar::before{
-  color: var(--nfg);
-}
-
 #input {
   padding: var(--padding) 38px;
   color: var(--title);
   border: none;
   box-shadow: none;
-}
-
-.has-dark #input {
-  color: var(--ntitle);
 }
 
 .item {
@@ -223,19 +188,10 @@ body.has-dark{
   cursor: pointer;
 }
 
-.has-dark .item.s,
-.has-dark .item:hover {
-  background-color: var(--naccent-fg);
-}
-
 .item .top {
   color: var(--title);
   position: relative;
   height: 30px;
-}
-
-.has-dark .item .top {
-  color: var(--ntitle);
 }
 
 .item .top .title {
@@ -246,10 +202,6 @@ body.has-dark{
 
 .item .top .title match {
   color: var(--title-accent);
-}
-
-.has-dark .item .top .title match {
-  color: var(--ntitle-accent);
 }
 
 .item .top .title:empty::after {
@@ -266,17 +218,9 @@ body.has-dark{
   font-size: var(--font-size-link);
 }
 
-.has-dark .item .bottom a {
-  color: var(--nlink);
-}
-
 .item .bottom a match {
   color: var(--nlink-accent);
   text-decoration: none;
-}
-
-.has-dark .item .bottom a match {
-  color: var(--nlink-accent);
 }
 
 /* #find */
@@ -298,17 +242,6 @@ body.has-dark{
 --title-accent: #e69875; /* title accent */
 --link: #83c092;         /* link */
 --link-accent: #e69875;  /* link accent */
-  
-  /* ---------- NIGHT THEME ---------- */
---nbg: #272e33;           /* base background */
---nfg: #D3C6AA;           /* foreground */
---naccent-fg: #4c3743;    /* accent foreground */
---nborder: #495156;       /* border */
---ntitle: #d3c6aa;        /* title */
---ntitle-accent: #272e33; /* title accent */
---nlink: #83c092;         /* link */
---nlink-accent: #e69875;  /* link accent */
-
 
   font-family: var(--font);
   /*font-size: var(--font-size);*/
@@ -322,21 +255,6 @@ body.has-dark{
   box-shadow: none;
 }
 
-.r.D {
-  color: var(--ntitle-accent);
-  background: var(--nbg);
-}
-
 #i {
   color: var(--link-accent);
 }
-
-.D #i {
-  color: var(--nlink-accent);
-}
-
-
-/* #find:host */
-
-
-/* #find:selection */

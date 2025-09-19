@@ -6,5 +6,5 @@ adjust-cell-height = 3
 
 # mac-specific options
 macos-option-as-alt = true
-macos-titlebar-style = "hidden"
+macos-titlebar-style = "none"
 confirm-close-surface = false
