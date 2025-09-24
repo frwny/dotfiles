@@ -10,8 +10,6 @@ return {
 
   config = function()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
-    local lspconfig = require('lspconfig')
-
 
     local servers = {
       pyright = {},
@@ -41,8 +39,10 @@ return {
       },
     }
 
+    -- configure each server manually
     for name, opts in pairs(servers) do
-      lspconfig[name].setup(opts)
+      opts.capabilities = capabilities
+      vim.lsp.config(name, opts)
     end
 
     -- setup mason-lspconfig
@@ -50,12 +50,6 @@ return {
       ensure_installed = vim.tbl_keys(servers),
       automatic_enable = true,   -- auto-enable installed servers
     }
-
-    -- configure each server manually
-    for name, opts in pairs(servers) do
-      opts.capabilities = capabilities
-      lspconfig[name].setup(opts)
-    end
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

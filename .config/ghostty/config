@@ -3,8 +3,10 @@ font-family = "MesloLGM Nerd Font Mono"
 theme = "Everforest Dark - Hard"
 adjust-cell-width = -1
 adjust-cell-height = 3
+window-padding-x = 5
+window-padding-y = 5
 
 # mac-specific options
 macos-option-as-alt = true
-macos-titlebar-style = "none"
+macos-titlebar-style = "hidden"
 confirm-close-surface = false
