@@ -23,8 +23,8 @@ return {
         mappings = {
           ["n"] = {
             -- your custom normal mode mappings
-            ["vv"] = "select_vertical",
-            ["hh"] = "select_horizontal"
+            ["v"] = "select_vertical",
+            ["V"] = "select_horizontal"
           },
         },
         -- Use grep wihtout rg dependency

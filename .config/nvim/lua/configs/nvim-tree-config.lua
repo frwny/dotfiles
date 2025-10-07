@@ -45,6 +45,8 @@ local function my_on_attach(bufnr)
   vim.keymap.set("n", "L", vsplit_preview,        opts("Vsplit Preview"))
   vim.keymap.set("n", "h", api.tree.close,        opts("Close"))
   vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
+  vim.keymap.set("n", "v", api.node.open.vertical, opts("Split Vertical"))
+  vim.keymap.set("n", "V", api.node.open.horizontal, opts("Split Horizontal"))
 end
 
 function M.setup()

@@ -68,7 +68,7 @@ vim.keymap.set("n", "<Leader>sr", "<cmd>AutoSession search<CR>")
 
 -- Split keybinds
 vim.keymap.set("n", "<Leader>v", ":vsp %<CR>")
-vim.keymap.set("n", "<Leader>h", ":sp %<CR>")
+vim.keymap.set("n", "<Leader>V", ":sp %<CR>")
 vim.keymap.set("n", "<Leader>wc", ":close<CR>")
 
 -- Tmux keybinds
