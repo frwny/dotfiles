@@ -13,8 +13,11 @@ export PATH=$HOME/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.c
 export GPG_TTY=$(tty)
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
 
+source <(fzf --zsh)
 
-for f in ~/bin/*; do source $f; done
+if [ -d $HOME/bin/n-able/ ]; then
+  for f in $HOME/bin/n-able/; do source $f; done
+fi
 
 #syntax highlighting
 source $HOME/git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

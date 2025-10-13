@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 })
 
 -- Misc
+vim.o.autochdir = false
 vim.o.termguicolors = true
 vim.o.breakindent = true
 vim.o.undofile = true
