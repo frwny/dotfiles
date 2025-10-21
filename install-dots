@@ -55,6 +55,8 @@ if [ "$install" != "${install#[Yy]}" ] ;then
   done
 
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git clone https://github.com/jeffreytse/zsh-vi-mode ~/git/zsh-vi-mode
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/git/zsh-syntax-highlighting
   install_dots
 else
   exit

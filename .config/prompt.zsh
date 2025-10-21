@@ -99,7 +99,7 @@ function set-prompt() {
 
   local top_left="%F{blue}ymn%f in %B%F{green}%~%f%b"
   local top_right="%F{magenta}${git_branch}%f"
-  local bottom_left='%B%F{%(?.green.red)} 󰜴%f%b '
+  local bottom_left='%B%F{green} 󰜴%f%b '
 #  local bottom_right='%F{yellow}%T%f'
 
   local REPLY

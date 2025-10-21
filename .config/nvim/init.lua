@@ -34,6 +34,30 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   pattern = "*",
 })
 
+-- Pane dimming
+local function dim_all(active)
+  if active then
+    vim.opt.winhl = ""
+  else
+    vim.opt.winhl = "Normal:Dimmed,NormalNC:Dimmed"
+  end
+end
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2326" })
+  end,
+})
+vim.api.nvim_set_hl(0, "Dimmed", { bg = "#1e2326" })
+
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
+  callback = function() dim_all(false) end,
+})
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
+  callback = function() dim_all(true) end,
+})
+
+
+
 -- Misc
 vim.o.autochdir = false
 vim.o.termguicolors = true
@@ -63,7 +87,7 @@ vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
 vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
 vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
-vim.keymap.set("n", "<Leader>fid", ":Telescope find_files cwd=")
+vim.keymap.set("n", "<Leader>gid", ":Telescope live_grep cwd=./")
 vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>AutoSession search<CR>")
 
@@ -87,6 +111,11 @@ vim.keymap.set("n", "<C-M-h>", "<cmd>lua require('tmux').resize_left()<cr>")
 vim.keymap.set("n", "<C-M-j>", "<cmd>lua require('tmux').resize_bottom()<cr>")
 vim.keymap.set("n", "<C-M-k>", "<cmd>lua require('tmux').resize_top()<cr>")
 vim.keymap.set("n", "<C-M-l>", "<cmd>lua require('tmux').resize_right()<cr>")
+
+vim.keymap.set("n", "<C-S-H>", "<cmd>lua require('tmux').swap_left()<cr>")
+vim.keymap.set("n", "<C-S-J>", "<cmd>lua require('tmux').swap_bottom()<cr>")
+vim.keymap.set("n", "<C-S-K>", "<cmd>lua require('tmux').swap_top()<cr>")
+vim.keymap.set("n", "<C-S-L>", "<cmd>lua require('tmux').swap_right()<cr>")
 
 
 -- Tab keybinds

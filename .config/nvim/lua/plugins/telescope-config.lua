@@ -40,6 +40,7 @@ return {
         },
         file_ignore_patterns = {
           "^.git/*",
+          ".terraform/*",
           "node_modules/*",
           "Music",
           ".runelite",
