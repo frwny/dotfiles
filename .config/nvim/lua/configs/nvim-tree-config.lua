@@ -58,6 +58,12 @@ function M.setup()
       signcolumn = "no",
     },
     renderer = {
+      highlight_bookmarks = "name",
+      icons = {
+        show = {
+          bookmarks = true,
+        },
+      },
       indent_markers = {
         enable = true,
       },
