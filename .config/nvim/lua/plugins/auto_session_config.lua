@@ -1,5 +1,6 @@
 return {
   'rmagatti/auto-session',
+  event = 'VeryLazy',
   opts = {
     suppressed_dirs = { "~/Downloads", "/", "~/git/dotfiles" },
     bypass_save_filetypes = { "startup" },

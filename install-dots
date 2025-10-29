@@ -42,7 +42,7 @@ install_dots() {
 
   echo "========= linking startup.nvim dashboard ========="
   ln -Ffv .local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/dashboard.lua \
-    ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/dashboard.lua \
+    ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/steps.lua \
     && printf "\n"
 }
 

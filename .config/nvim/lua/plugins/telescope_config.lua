@@ -1,11 +1,11 @@
 return {
   'nvim-telescope/telescope.nvim',
-  event = 'VimEnter',
+  cmd = 'Telescope',
   dependencies = {
     'nvim-lua/plenary.nvim'
   },
   config = function()
-    require('telescope').setup{
+    require('telescope').setup({
       extensions = {
         fzf = {
           fuzzy = true,                    -- false will only do exact matching
@@ -61,7 +61,7 @@ return {
           hidden = true
         }
       },
-    }
+    })
     require('telescope').load_extension('fzf')
   end,
 }

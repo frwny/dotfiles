@@ -1,6 +1,6 @@
 -- Required plugins
+vim.g.mapleader = " "
 require('lazy_config')
-
 
 -- Line numbers
 vim.o.number = true
@@ -73,23 +73,21 @@ vim.cmd([[colorscheme everforest]])
 
 
 -- Key mappings
-vim.g.mapleader = " "
 vim.g.neovide_input_macos_alt_is_meta = true
 
 --Telescope bindings
-local builtin = require('telescope.builtin')
-local pickers = require('configs.pickers')
-vim.keymap.set("n", "<Leader>bb", builtin.buffers, {})
-vim.keymap.set("n", "<Leader>gb", builtin.git_branches, {})
-vim.keymap.set("n", "<Leader>gl", builtin.git_commits, {})
-vim.keymap.set("n", "<Leader>of", builtin.oldfiles, {})
-vim.keymap.set("n", "<Leader>gs", builtin.grep_string, {})
-vim.keymap.set("n", "<Leader>lg", builtin.live_grep, {})
-vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
-vim.keymap.set("n", "<Leader>gid", ":Telescope live_grep cwd=./")
+-- local pickers = require('configs.pickers')
+-- vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
+vim.keymap.set("n", "<Leader>bb", "<cmd>Telescope buffers<CR>")
+vim.keymap.set("n", "<Leader>gb", "<cmd>Telescope git_branches<CR>")
+vim.keymap.set("n", "<Leader>gl", "<cmd>Telescope git_commits<CR>")
+vim.keymap.set("n", "<Leader>of", "<cmd>Telescope oldfiles<CR>")
+vim.keymap.set("n", "<Leader>gs", "<cmd>Telescope grep_string<CR>")
+vim.keymap.set("n", "<Leader>lg", "<cmd>Telescope live_grep<CR>")
+vim.keymap.set("n", "<Leader>ff", "<cmd>Telescope find_files<CR>")
 vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>AutoSession search<CR>")
+vim.keymap.set("n", "<Leader>gid", ":Telescope live_grep cwd=./")
 
 -- Split keybinds
 vim.keymap.set("n", "<Leader>v", ":vsp %<CR>")

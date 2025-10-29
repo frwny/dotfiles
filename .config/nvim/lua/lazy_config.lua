@@ -13,19 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 local unpack = table.unpack or unpack  -- make sure unpack exists
 
--- auto-load plugins/*.lua
-local plugin_files = {}
-local scan = vim.fn.globpath(vim.fn.stdpath("config") .. "/lua/plugins", "*.lua", true, true)
-for _, file in ipairs(scan) do
-  local mod = file:match("lua/(.+)%.lua$"):gsub("/", ".")
-  table.insert(plugin_files, require(mod))
-end
-
 require("lazy").setup({
   spec = {
-    -- vanity
-    { "dstein64/vim-startuptime" },
-
     -- lsp, syntax and linting
     { "mason-org/mason.nvim" },
     { "j-hui/fidget.nvim", opts = {} },
@@ -40,7 +29,7 @@ require("lazy").setup({
     { "stevearc/quicker.nvim", event = "VeryLazy" },
 
     { "lukas-reineke/indent-blankline.nvim",
-      event = "VimEnter",
+      event = "VeryLazy",
       config = function()
         require("ibl").setup({
           indent = { char = "│" },
@@ -57,6 +46,7 @@ require("lazy").setup({
     },
 
     { "nvim-tree/nvim-tree.lua",
+      cmd = "NvimTreeFindFileToggle",
       dependencies = { "nvim-tree/nvim-web-devicons" },
       config = function()
         require("configs.nvim-tree-config").setup()
@@ -69,23 +59,12 @@ require("lazy").setup({
       lazy = false,
       priority = 1000,
       config = function()
-        require("alpha").setup(require("alpha.themes.dashboard").config)
+        require("alpha").setup(require("alpha.themes.steps").config)
       end
     },
 
-    -- { "nvim-treesitter/nvim-treesitter",
-    --   build = ":TSUpdate",
-    --   config = function()
-    --     require("nvim-treesitter.configs").setup({
-    --     highlight = { enable = true },
-    --     indent = { enable = true },
-    --   })
-    -- end
-    -- },
-
-
     -- auto-import plugins from lua/plugins/*.lua
-    unpack(plugin_files),
+    { import = "plugins", }
   },
   checker = { enabled = true },
 })
