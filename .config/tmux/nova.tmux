@@ -22,3 +22,4 @@ set -g @nova-segment-kube-colors "#A7C080 #2D353B"
 
 set -g @nova-segments-0-right "kube"
 
+

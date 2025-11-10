@@ -1,8 +1,14 @@
-set -o vi
+setopt auto_cd
+setopt hist_save_no_dups
+setopt share_history
 
 #load autocomplete
-autoload -U compinit
-compinit
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 #set default editor
 export EDITOR="nvim"

@@ -35,26 +35,26 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 })
 
 -- Pane dimming
-local function dim_all(active)
-  if active then
-    vim.opt.winhl = ""
-  else
-    vim.opt.winhl = "Normal:Dimmed,NormalNC:Dimmed"
-  end
-end
-vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = function()
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2326" })
-  end,
-})
-vim.api.nvim_set_hl(0, "Dimmed", { bg = "#1e2326" })
+-- local function dim_all(active)
+--   if active then
+--     vim.opt.winhl = ""
+--   else
+--     vim.opt.winhl = "Normal:Dimmed,NormalNC:Dimmed"
+--   end
+-- end
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   callback = function()
+--     vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1e2326" })
+--   end,
+-- })
+-- vim.api.nvim_set_hl(0, "Dimmed", { bg = "#1e2326" })
 
-vim.api.nvim_create_autocmd({ "FocusLost" }, {
-  callback = function() dim_all(false) end,
-})
-vim.api.nvim_create_autocmd({ "FocusGained" }, {
-  callback = function() dim_all(true) end,
-})
+-- vim.api.nvim_create_autocmd({ "FocusLost" }, {
+--   callback = function() dim_all(false) end,
+-- })
+-- vim.api.nvim_create_autocmd({ "FocusGained" }, {
+--   callback = function() dim_all(true) end,
+-- })
 
 
 
