@@ -101,6 +101,7 @@ local buttons = {
       button( "<leader>lg", "󰍉 Find Word" ),
       button( "<leader>of", " Recent Files" ),
       button( "<leader>fb", " File Browser" ),
+      button( "<leader>lz", " Lazy" ),
     },
     opts = {
         spacing = 0,
