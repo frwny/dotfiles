@@ -54,4 +54,5 @@ alias rm="rm -r"
 alias cp="cp -r"
 alias pong="ping -c 3 google.com"
 
+eval "$(ssh-agent -s)"
 source ~/.config/prompt.zsh
