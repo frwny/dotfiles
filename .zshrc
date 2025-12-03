@@ -15,7 +15,7 @@ export EDITOR="nvim"
 export K9S_SKIN="everforest"
 
 #paths
-export PATH=$HOME/bin:/opt/homebrew/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:/opt/homebrew/bin:/opt/homebrew/opt/openjdk/bin:$HOME/bin/colours:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 export GPG_TTY=$(tty)
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
 
