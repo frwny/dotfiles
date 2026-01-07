@@ -50,9 +50,9 @@ printf "Your installed dotfiles will be overwritten. \n\nAre you sure you want t
 
 read -r install
 if [ "$install" != "${install#[Yy]}" ] ;then 
-  for folder in ${FOLDERS[@]}; do
+  for folder in "${FOLDERS[@]}"; do
 	  if [[ ! -d $folder ]]; then
-	    mkdir -p ${folder}
+	    mkdir -p "${folder}"
 	  fi
   done
 
