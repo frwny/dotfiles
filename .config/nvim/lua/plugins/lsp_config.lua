@@ -15,7 +15,15 @@ return {
     local servers = {
       pyright = {},
       terraformls = {},
-      bashls = {},
+      bashls = {
+        settings = {
+          bashIde = {
+            shellcheckArguments = {
+              "--severity=warning"
+            }
+          }
+        }
+      },
       lua_ls = {
         capabilities = capabilities,
         settings = {

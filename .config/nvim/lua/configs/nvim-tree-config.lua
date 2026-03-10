@@ -49,7 +49,7 @@ end
 
 function M.setup()
   require("nvim-tree").setup({
-    sync_root_with_cwd = false,
+    sync_root_with_cwd = true,
     sort = {
       sorter = "case_sensitive",
     },
@@ -67,7 +67,7 @@ function M.setup()
       indent_markers = {
         enable = true,
       },
-      group_empty = true,
+      group_empty = false,
     },
     filters = {
       dotfiles = false,

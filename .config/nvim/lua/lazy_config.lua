@@ -45,6 +45,14 @@ require("lazy").setup({
       end
     },
 
+    -- cursor
+    { "xTacobaco/cursor-agent.nvim",
+      event = "VeryLazy",
+      config = function()
+        require("cursor-agent").setup({})
+      end,
+    },
+
     { "nvim-tree/nvim-tree.lua",
       cmd = "NvimTreeFindFileToggle",
       dependencies = { "nvim-tree/nvim-web-devicons" },

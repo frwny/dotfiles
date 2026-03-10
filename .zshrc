@@ -38,6 +38,9 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 alias icat="kitty +kitten icat"
 
 #aliases
+alias k9s="TERM=xterm-256color k9s"
+alias tf="terraform"
+alias cursor="cursor-agent"
 alias jukebox="mpv http://fig.whatbox.ca:3003 > /dev/null 2>&1 &"
 alias gotop="gotop -c nord --celsius"
 alias vim="nvim"

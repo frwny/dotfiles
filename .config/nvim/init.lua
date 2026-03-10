@@ -76,15 +76,15 @@ vim.cmd([[colorscheme everforest]])
 vim.g.neovide_input_macos_alt_is_meta = true
 
 --Telescope bindings
--- local pickers = require('configs.pickers')
--- vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
+local pickers = require('configs.pickers')
+vim.keymap.set("n", "<Leader>pf", pickers.project_files, {})
 vim.keymap.set("n", "<Leader>bb", "<cmd>Telescope buffers<CR>")
 vim.keymap.set("n", "<Leader>gb", "<cmd>Telescope git_branches<CR>")
 vim.keymap.set("n", "<Leader>gl", "<cmd>Telescope git_commits<CR>")
 vim.keymap.set("n", "<Leader>of", "<cmd>Telescope oldfiles<CR>")
 vim.keymap.set("n", "<Leader>gs", "<cmd>Telescope grep_string<CR>")
 vim.keymap.set("n", "<Leader>lg", "<cmd>Telescope live_grep<CR>")
-vim.keymap.set("n", "<Leader>ff", "<cmd>Telescope find_files<CR>")
+vim.keymap.set("n", "<Leader>ff", "<cmd>Telescope find_files cwd=./<CR>")
 vim.keymap.set("n", "<Leader>fb", "<cmd>Telescope file_browser<CR>")
 vim.keymap.set("n", "<Leader>sr", "<cmd>AutoSession search<CR>")
 vim.keymap.set("n", "<Leader>gid", ":Telescope live_grep cwd=./")
@@ -115,6 +115,10 @@ vim.keymap.set("n", "<C-S-J>", "<cmd>lua require('tmux').swap_bottom()<cr>")
 vim.keymap.set("n", "<C-S-K>", "<cmd>lua require('tmux').swap_top()<cr>")
 vim.keymap.set("n", "<C-S-L>", "<cmd>lua require('tmux').swap_right()<cr>")
 
+-- Cursor
+vim.keymap.set("n", "<leader>ca", ":CursorAgent<CR>", { desc = "Cursor Agent: Toggle terminal" })
+vim.keymap.set("v", "<leader>ca", ":CursorAgentSelection<CR>", { desc = "Cursor Agent: Send selection" })
+vim.keymap.set("n", "<leader>cb", ":CursorAgentBuffer<CR>", { desc = "Cursor Agent: Send buffer" })
 
 -- Tab keybinds
 vim.keymap.set("n", "<Tab>", ":bn<CR>")
