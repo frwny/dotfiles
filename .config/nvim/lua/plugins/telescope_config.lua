@@ -1,3 +1,5 @@
+local actions = require("telescope.actions")
+
 return {
   'nvim-telescope/telescope.nvim',
   cmd = 'Telescope',
@@ -23,6 +25,7 @@ return {
         mappings = {
           ["n"] = {
             -- your custom normal mode mappings
+            ["<CR>"] = actions.select_default + actions.center,
             ["v"] = "select_vertical",
             ["V"] = "select_horizontal"
           },
