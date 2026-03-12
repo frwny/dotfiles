@@ -1,4 +1,22 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local function multi_open(prompt_bufnr)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local multi_selection = picker:get_multi_selection()
+
+  if #multi_selection > 0 then
+    actions.close(prompt_bufnr)
+    for _, entry in ipairs(multi_selection) do
+      if entry.path then
+        vim.cmd("edit " .. entry.path)
+      end
+    end
+  else
+    actions.select_default(prompt_bufnr)
+    actions.center(prompt_bufnr)
+  end
+end
 
 return {
   'nvim-telescope/telescope.nvim',
@@ -25,11 +43,11 @@ return {
         mappings = {
           -- your custom insert mode mappings
           i = {
-            ["<CR>"] = actions.select_default + actions.center,
+            ["<CR>"] = multi_open,
           },
           -- your custom normal mode mappings
-          ["n"] = {
-            ["<CR>"] = actions.select_default + actions.center,
+          n = {
+            ["<CR>"] = multi_open,
             ["v"] = "select_vertical",
             ["V"] = "select_horizontal"
           },
@@ -55,11 +73,11 @@ return {
         },
       },
       pickers = {
-        show_all_buffers = true,
-        sort_lastused = true,
         buffers = {
+          show_all_buffers = true,
+          sort_lastused = true,
           mappings = {
-            ["n"] = {
+            n = {
               -- your custom normal mode mappings
               ["<leader>bd"] = "delete_buffer"
             },
