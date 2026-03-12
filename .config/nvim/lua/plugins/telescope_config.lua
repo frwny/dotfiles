@@ -23,8 +23,12 @@ return {
           anchor = "N",
         },
         mappings = {
+          -- your custom insert mode mappings
+          i = {
+            ["<CR>"] = actions.select_default + actions.center,
+          },
+          -- your custom normal mode mappings
           ["n"] = {
-            -- your custom normal mode mappings
             ["<CR>"] = actions.select_default + actions.center,
             ["v"] = "select_vertical",
             ["V"] = "select_horizontal"
@@ -51,6 +55,8 @@ return {
         },
       },
       pickers = {
+        show_all_buffers = true,
+        sort_lastused = true,
         buffers = {
           mappings = {
             ["n"] = {
@@ -62,7 +68,7 @@ return {
         find_files = {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
           hidden = true
-        }
+        },
       },
     })
     require('telescope').load_extension('fzf')
