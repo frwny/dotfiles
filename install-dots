@@ -23,7 +23,7 @@ install_dots() {
 
   echo "========= linking ghostty config ========="
   ln -Ffv ./.config/ghostty/config ~/.config/ghostty/config && printf "\n"
-  ln -Ffv ./.config/ghostty/config/themes ~/.config/ghostty/config/themes && printf "\n"
+  ln -Ffv ./.config/ghostty/themes/* ~/.config/ghostty/themes/ && printf "\n"
 
   echo "========= linking ghostty config ========="
   ln -Ffv ./.config/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml && printf "\n"
@@ -35,7 +35,7 @@ install_dots() {
   ln -Ffv .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/ && printf "\n"
 
   echo "========= linking nvim lazy config ========="
-  ln -Ffv .config/nvim/lua/* ~/.config/nvim/lua/ && printf "\n"
+  ln -Ffv .config/nvim/lua/lazy_config.lua ~/.config/nvim/lua/ && printf "\n"
 
   echo "========= linking nvim lua plugins ========="
   ln -Ffv .config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ && printf "\n"
