@@ -115,15 +115,19 @@ vim.keymap.set("n", "<C-S-J>", "<cmd>lua require('tmux').swap_bottom()<cr>")
 vim.keymap.set("n", "<C-S-K>", "<cmd>lua require('tmux').swap_top()<cr>")
 vim.keymap.set("n", "<C-S-L>", "<cmd>lua require('tmux').swap_right()<cr>")
 
--- Cursor
-vim.keymap.set("n", "<leader>ca", ":CursorAgent<CR>", { desc = "Cursor Agent: Toggle terminal" })
-vim.keymap.set("v", "<leader>ca", ":CursorAgentSelection<CR>", { desc = "Cursor Agent: Send selection" })
-vim.keymap.set("n", "<leader>cb", ":CursorAgentBuffer<CR>", { desc = "Cursor Agent: Send buffer" })
-
 -- Tab keybinds
 vim.keymap.set("n", "<Tab>", ":bn<CR>")
 vim.keymap.set("n", "<S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bd!<CR>")
+
+-- Cursor agent
+local cursor = require('configs.cursor')
+cursor.setup()
+vim.keymap.set("n", "<Leader>cc", ":Cursor ")
+vim.keymap.set("n", "<Leader>ct", cursor.toggle, { desc = "Toggle Cursor chat" })
+vim.keymap.set("n", "<Leader>cv", cursor.open_vertical, { desc = "Cursor chat vertical" })
+vim.keymap.set("n", "<Leader>ch", cursor.open_horizontal, { desc = "Cursor chat horizontal" })
+vim.keymap.set("n", "<Leader>cs", cursor.stop, { desc = "Stop Cursor agent" })
 
 -- Misc keybinds
 local quickfix = require('configs.quickfix')

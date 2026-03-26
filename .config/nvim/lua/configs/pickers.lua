@@ -7,10 +7,10 @@ M.project_files = function(opts)
   opts = opts or {
     find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
     file_ignore_patterns = {
-      "^.git/*",
-      "node_modules/*",
+      "^%.git/",
+      "node_modules/",
       "Music",
-      ".runelite",
+      "%.runelite",
       "pipx"
     },
   }
