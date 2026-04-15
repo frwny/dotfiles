@@ -120,14 +120,16 @@ vim.keymap.set("n", "<Tab>", ":bn<CR>")
 vim.keymap.set("n", "<S-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<Leader>bd", ":bd!<CR>")
 
--- Cursor agent
-local cursor = require('configs.cursor')
-cursor.setup()
+-- Cursor agent (lazy loaded on first use)
+local function cursor() return require('configs.cursor') end
 vim.keymap.set("n", "<Leader>cc", ":Cursor ")
-vim.keymap.set("n", "<Leader>ct", cursor.toggle, { desc = "Toggle Cursor chat" })
-vim.keymap.set("n", "<Leader>cv", cursor.open_vertical, { desc = "Cursor chat vertical" })
-vim.keymap.set("n", "<Leader>ch", cursor.open_horizontal, { desc = "Cursor chat horizontal" })
-vim.keymap.set("n", "<Leader>cs", cursor.stop, { desc = "Stop Cursor agent" })
+vim.keymap.set("n", "<Leader>ct", function() cursor().toggle() end, { desc = "Toggle Cursor chat" })
+vim.keymap.set("n", "<Leader>cv", function() cursor().open_vertical() end, { desc = "Cursor chat vertical" })
+vim.keymap.set("n", "<Leader>ch", function() cursor().open_horizontal() end, { desc = "Cursor chat horizontal" })
+vim.keymap.set("n", "<Leader>cs", function() cursor().stop() end, { desc = "Stop Cursor agent" })
+vim.keymap.set("n", "<Leader>cn", function() cursor().new_chat() end, { desc = "New Cursor chat" })
+vim.keymap.set("n", "<Leader>cp", function() cursor().pick_chat() end, { desc = "Pick Cursor chat" })
+vim.keymap.set("n", "<Leader>cm", function() cursor().cycle_mode() end, { desc = "Cycle Cursor mode" })
 
 -- Misc keybinds
 local quickfix = require('configs.quickfix')
