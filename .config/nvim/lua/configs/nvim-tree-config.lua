@@ -72,6 +72,10 @@ function M.setup()
     filters = {
       dotfiles = false,
     },
+    git = {
+      enable = true,
+      ignore = false,  -- Show gitignored files
+    },
     on_attach = my_on_attach,
   })
 end
