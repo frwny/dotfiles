@@ -1,66 +1,91 @@
 #!/bin/bash
 
+# Absolute path to this repo, so the script works from any cwd and so the
+# symlinks below get absolute targets. A relative target would be resolved
+# against the *link's* directory, not the cwd, and end up broken.
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 FOLDERS=(
   ~/.config/tmux/
   ~/.config/ghostty/
   ~/.config/ghostty/themes
   ~/.config/aerospace/
-	~/.config/nvim/lua/configs/
-	~/.config/nvim/lua/plugins/
-	~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/
-	)
+  ~/.config/nvim/lua/configs/
+  ~/.config/nvim/lua/plugins/
+  ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/
+)
+
+# link SRC... DEST
+#
+# Symlink, not hard link. Hard links share an inode, and editors that save by
+# writing a temp file and renaming it over the original give the repo file a new
+# inode -- silently leaving the installed copy behind on the old one, still
+# holding stale content. Symlinks point at a path, so they keep following.
+#
+# -n so an existing symlink is replaced rather than dereferenced.
+link() {
+  local dest="${@: -1}"
+  local srcs=("${@:1:$#-1}")
+  ln -sfnv "${srcs[@]/#/$REPO/}" "$dest" && printf "\n"
+}
 
 install_dots() {
   echo "========= linking zshrc ========="
-  ln -Ffv ./.zshrc ~/.zshrc && printf "\n"
+  link .zshrc ~/.zshrc
 
-  echo "========= linking zshrc ========="
-  ln -Ffv ./.config/prompt.zsh ~/.config/ && printf "\n"
+  echo "========= linking prompt ========="
+  link .config/prompt.zsh ~/.config/prompt.zsh
 
   echo "========= linking tmux.conf and theme ========="
-  ln -Ffv ./.config/tmux/tmux.conf ~/.config/tmux/tmux.conf && printf "\n"
-  ln -Ffv ./.config/tmux/dotbar.tmux ~/.config/tmux/dotbar.tmux && printf "\n"
+  link .config/tmux/tmux.conf ~/.config/tmux/tmux.conf
+  link .config/tmux/dotbar.tmux ~/.config/tmux/dotbar.tmux
 
   echo "========= linking ghostty config ========="
-  ln -Ffv ./.config/ghostty/config ~/.config/ghostty/config && printf "\n"
-  ln -Ffv ./.config/ghostty/themes/* ~/.config/ghostty/themes/ && printf "\n"
+  link .config/ghostty/config ~/.config/ghostty/config
+  link .config/ghostty/themes/* ~/.config/ghostty/themes/
 
-  echo "========= linking ghostty config ========="
-  ln -Ffv ./.config/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml && printf "\n"
+  echo "========= linking aerospace config ========="
+  link .config/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml
 
-  echo "========= linking init.lua  ========="
-  ln -Ffv .config/nvim/init.lua ~/.config/nvim/init.lua && printf "\n"
+  echo "========= linking init.lua ========="
+  link .config/nvim/init.lua ~/.config/nvim/init.lua
 
   echo "========= linking nvim lua configs ========="
-  ln -Ffv .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/ && printf "\n"
+  link .config/nvim/lua/configs/* ~/.config/nvim/lua/configs/
 
   echo "========= linking nvim lazy config ========="
-  ln -Ffv .config/nvim/lua/lazy_config.lua ~/.config/nvim/lua/ && printf "\n"
+  link .config/nvim/lua/lazy_config.lua ~/.config/nvim/lua/lazy_config.lua
 
   echo "========= linking nvim lua plugins ========="
-  ln -Ffv .config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ && printf "\n"
+  link .config/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/
 
   echo "========= linking startup.nvim dashboard ========="
-  ln -Ffv ./dashboard.lua \
-    ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/steps.lua \
-    && printf "\n"
+  link dashboard.lua ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha/themes/steps.lua
+}
+
+# clone REPO_URL DEST -- skip if already there, so this script is re-runnable
+clone() {
+  if [[ -d $2 ]]; then
+    echo "already present, skipping: $2"
+  else
+    git clone "$1" "$2"
+  fi
 }
 
 printf "Your installed dotfiles will be overwritten. \n\nAre you sure you want to continue? y/n\n"
 
 read -r install
-if [ "$install" != "${install#[Yy]}" ] ;then 
+if [ "$install" != "${install#[Yy]}" ] ;then
   for folder in "${FOLDERS[@]}"; do
-	  if [[ ! -d $folder ]]; then
-	    mkdir -p "${folder}"
-	  fi
+    if [[ ! -d $folder ]]; then
+      mkdir -p "${folder}"
+    fi
   done
 
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  git clone https://github.com/jeffreytse/zsh-vi-mode ~/git/zsh-vi-mode
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/git/zsh-syntax-highlighting
+  clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  clone https://github.com/jeffreytse/zsh-vi-mode ~/git/zsh-vi-mode
+  clone https://github.com/zsh-users/zsh-syntax-highlighting ~/git/zsh-syntax-highlighting
   install_dots
 else
   exit
 fi
-

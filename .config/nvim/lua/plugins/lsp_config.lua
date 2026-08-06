@@ -69,7 +69,7 @@ return {
         end
 
         map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
       end,
     })
