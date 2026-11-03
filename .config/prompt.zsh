@@ -37,11 +37,33 @@ function _prompt_git_ref() {
   print -rn -- ${ref//\%/%%}  # escape '%' for prompt_percent
 }
 
-# 'sharedsvcs dev eu-west-1' for the active AWS_PROFILE, else empty.
+# 'eu-west-1' -> 'euwe1', into REPLY. Two chars of the geo, two of the direction,
+# then the number. Compound directions contract to their initials, so
+# ap-southeast-2 -> apse2 rather than apso2. Anything not in geo-direction-number
+# shape (us-gov-west-1 and friends) is passed through untouched.
+function _prompt_aws_region_short() {
+  emulate -L zsh
+  local -a p=(${(s:-:)1})
+  if (( ${#p} != 3 )); then
+    REPLY=$1
+    return
+  fi
+  local dir
+  case $p[2] in
+    northeast) dir=ne ;;
+    northwest) dir=nw ;;
+    southeast) dir=se ;;
+    southwest) dir=sw ;;
+    *)         dir=${p[2][1,2]} ;;
+  esac
+  REPLY="${p[1][1,2]}${dir}${p[3]}"
+}
+
+# 'sharedsvcs-dev-euwe1' for the active AWS_PROFILE, else empty.
 function _prompt_aws() {
   [[ -n $AWS_PROFILE ]] || return 0
   local label=${AWS_PROFILE%-devops}   # 'sharedsvcs_dev-devops' -> 'sharedsvcs dev'
-  label=${label//_/ }
+  label=${label//_/-}
   local region=${AWS_REGION:-$AWS_DEFAULT_REGION}
   if [[ -z $region ]]; then            # fall back to ~/.aws/config
     region=$(awk -v want="$AWS_PROFILE" '
@@ -50,7 +72,11 @@ function _prompt_aws() {
         sub(/^[^=]*=[[:space:]]*/, ""); gsub(/[[:space:]]/, ""); print; exit
       }' ~/.aws/config 2>/dev/null)
   fi
-  [[ -n $region ]] && label="$label $region"
+  if [[ -n $region ]]; then
+    local REPLY
+    _prompt_aws_region_short $region
+    label="$label-$REPLY"
+  fi
   print -rn -- ${label//\%/%%}
 }
 
@@ -64,7 +90,7 @@ function _prompt_segments() {
 
   local aws=$(_prompt_aws)
   if [[ -n $aws ]]; then
-    _prompt_badge=" %F{8}·%f %F{yellow}${aws}%f"
+    _prompt_badge=" as %F{8}%f%F{yellow}${aws}%f"
   else
     _prompt_badge=''
   fi
