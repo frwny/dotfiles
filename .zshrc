@@ -21,10 +21,11 @@ export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
 
 source <(fzf --zsh)
 
-# function directory
+# function directory (each file is one function, loaded on first use)
 dir=$HOME/bin/n-able
 if [ -d $dir ]; then
-  for f in $(ls -1 $dir); do source ${dir}/${f}; done
+  fpath=($dir $fpath)
+  autoload -Uz $dir/*(N:t)
 fi
 
 #syntax highlighting
@@ -61,3 +62,8 @@ source ~/.config/prompt.zsh
 source ~/.env
 
 
+
+# >>> nter shell integration >>>
+# Added by 'nter install'. Re-run to refresh; safe to delete.
+eval "$(nter shell-init zsh)"
+# <<< nter shell integration <<<
