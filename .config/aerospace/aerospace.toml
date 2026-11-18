@@ -95,6 +95,7 @@ automatically-unhide-macos-hidden-apps = true
     alt-slash = 'layout h_tiles'
     alt-period = 'layout v_accordion'
     alt-f = 'fullscreen'
+    alt-shift-f = 'layout floating tiling'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left --boundaries-action wrap-around-the-workspace'

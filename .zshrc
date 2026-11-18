@@ -21,6 +21,9 @@ export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
 
 source <(fzf --zsh)
 
+# nter pickers start in normal mode ('/' to filter)
+export NTER_VI_MODE=1
+
 # function directory (each file is one function, loaded on first use)
 dir=$HOME/bin/n-able
 if [ -d $dir ]; then
@@ -60,10 +63,3 @@ alias pong="ping -c 3 google.com"
 
 source ~/.config/prompt.zsh
 source ~/.env
-
-
-
-# >>> nter shell integration >>>
-# Added by 'nter install'. Re-run to refresh; safe to delete.
-eval "$(nter shell-init zsh)"
-# <<< nter shell integration <<<
